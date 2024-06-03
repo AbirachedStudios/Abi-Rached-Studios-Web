@@ -1,3 +1,4 @@
+// app/layout.js
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";

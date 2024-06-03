@@ -6,10 +6,11 @@ import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
 import { navbarItems } from "../../data/navbarItems";
 import Languages from "./languages";
+import { paths } from "@/data/paths";
 
 export default function Navbar() {
   const [lang, setLang] = useState("default");
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -38,7 +39,7 @@ export default function Navbar() {
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
-            href="#"
+            href={paths.home}
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <Image
@@ -83,7 +84,7 @@ export default function Navbar() {
           </button>
           <div
             className={`${
-              isButtonVisible ? "hidden" : ""
+              isButtonVisible ? "block" : "hidden"
             } w-full md:block md:w-auto`}
             id="navbar-default"
           >
@@ -92,7 +93,7 @@ export default function Navbar() {
                 <li key={item.default}>
                   <a
                     href={item.url}
-                    className={`block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 md:text-gold text-primary-0`}
+                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold"
                   >
                     {lang === "es" ? item.es : item.default}
                   </a>
@@ -102,7 +103,7 @@ export default function Navbar() {
           </div>
           <div
             className={`${
-              isButtonVisible ? "hidden md:flex" : "flex"
+              isButtonVisible ? "flex" : "hidden md:flex"
             } flex-col md:flex-row gap-2 md:gap-6 w-full md:w-auto my-8 items-center`}
           >
             <Languages onLanguageChange={handleLanguageChange} />
