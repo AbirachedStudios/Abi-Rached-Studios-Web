@@ -1,34 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import Button from "../commons/Button";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
 import { navbarItems } from "../../data/navbarItems";
-import Languages from "./languages";
+import Languages from "./Languages";
 import { paths } from "@/data/paths";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
-  const [lang, setLang] = useState("default");
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedLang = localStorage.getItem("lang") || "default";
-      setLang(storedLang);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("lang", lang);
-    }
-    console.log(lang);
-  }, [lang]);
-
-  const handleLanguageChange = (lang) => {
-    setLang(lang);
-  };
+  const { lang } = useLanguage(); // Obtener el idioma del contexto
+  const [isButtonVisible, setIsButtonVisible] = React.useState(false);
 
   const toggleButtonVisibility = () => {
     setIsButtonVisible(!isButtonVisible);
@@ -106,7 +89,7 @@ export default function Navbar() {
               isButtonVisible ? "flex" : "hidden md:flex"
             } flex-col md:flex-row gap-2 md:gap-6 w-full md:w-auto my-8 items-center`}
           >
-            <Languages onLanguageChange={handleLanguageChange} />
+            <Languages />
             <Button
               text="DOWNLOAD DEMO"
               textEs="DESCARGA LA DEMO"

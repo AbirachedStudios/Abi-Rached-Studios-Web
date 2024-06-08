@@ -1,33 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
 import linkedinIcon from "../../assets/icons/Linkedin Logo.svg";
 import facebookIcon from "../../assets/icons/Facebook Logo.svg";
 import instagramIcon from "../../assets/icons/Instagram Logo.svg";
-import { footerNavItems } from "@/data/footerItems";
+import { footerNavItems, footerPrivItems } from "@/data/footerItems";
 import { paths } from "@/data/paths";
+import { useLanguage } from "@/context/LanguageContext";
+
 const Footer = () => {
-  const [lang, setLang] = useState("default");
+  const { lang } = useLanguage();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedLang = localStorage.getItem("lang") || "default";
-      setLang(storedLang);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("lang", lang);
-    }
-    console.log("Language set to:", lang); // Debugging line
-  }, [lang]);
-
-  const handleLanguageChange = (lang) => {
-    setLang(lang);
-  };
   return (
     <footer className="bg-neutral-20 text-neutral-100 p-16 justify-between">
       <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -67,7 +52,9 @@ const Footer = () => {
         </div>
         <div className="container mx-auto flex flex-wrap flex-col md:flex-row gap-[6rem] mt-8">
           <div>
-            <h3 className="text-gold mb-2 font-title-large-bold">NAVEGACIÓN</h3>
+            <h3 className="text-gold mb-2 font-title-large-bold">
+              {lang === "es" ? "NAVEGACIÓN" : "NAVIGATION"}
+            </h3>
             <ul className="space-y-1">
               {footerNavItems.map((item) => (
                 <li key={item.default}>
@@ -83,7 +70,7 @@ const Footer = () => {
           </div>
           <div className="mt-4 md:mt-0">
             <h3 className="text-gold mb-2 font-title-large-bold">
-              INSTITUCIONAL
+              {lang === "es" ? "INSTITUCIONAL" : "INSTITUTIONAL"}
             </h3>
             <address className="not-italic space-y-1">
               <p className="font-title-large">Av. Alicia Moreau de Justo 350</p>
@@ -100,34 +87,21 @@ const Footer = () => {
           </div>
           <div className="mt-4 md:mt-0">
             <h3 className="text-gold mb-2 font-title-large-bold">
-              PRIVACIDAD Y TERMINOS DE USO
+              {lang === "es"
+                ? "PRIVACIDAD Y TERMINOS DE USO"
+                : "PRIVACY AND TERMS OF USE"}
             </h3>
             <ul className="space-y-1">
-              <li>
-                <a href="#" className="hover:text-primary-60 font-title-large">
-                  Política de privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary-60 font-title-large">
-                  Términos de uso
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary-60 font-title-large">
-                  Legales
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary-60 font-title-large">
-                  Afiliados
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary-60 font-title-large">
-                  Inversiones
-                </a>
-              </li>
+              {footerPrivItems.map((item) => (
+                <li key={item.default}>
+                  <a
+                    href={item.url}
+                    className="hover:text-primary-60 font-title-large"
+                  >
+                    {lang === "es" ? item.es : item.default}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

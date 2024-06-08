@@ -1,11 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Arg from "../../assets/icons/ARG.svg";
 import Us from "../../assets/icons/US.svg";
+import { useLanguage } from "@/context/LanguageContext";
 
-export default function Languages({ onLanguageChange }) {
+export default function Languages() {
+  const { setLang } = useLanguage();
+
   const handleLanguageChange = (lang) => {
-    onLanguageChange(lang);
+    setLang(lang);
   };
+
   return (
     <div className="flex flex-row gap-2">
       <div
