@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Button from "../commons/Button";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
@@ -8,19 +8,48 @@ import { navbarItems } from "../../data/navbarItems";
 import Languages from "./Languages";
 import { paths } from "@/data/paths";
 import { useLanguage } from "@/context/LanguageContext";
+import styles from "../../assets/styles/navbar.module.css";
 
 export default function Navbar() {
-  const { lang } = useLanguage(); // Obtener el idioma del contexto
+  const { lang } = useLanguage();
   const [isButtonVisible, setIsButtonVisible] = React.useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleButtonVisibility = () => {
     setIsButtonVisible(!isButtonVisible);
   };
 
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < lastScrollY) {
+      // Scrolling up
+      setIsScrollingUp(true);
+    } else {
+      // Scrolling down
+      setIsScrollingUp(false);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <div>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav
+        className={`bg-gray-900 bg-opacity-50 backdrop-blur ${styles.customNavbar} w-full transition-transform duration-300 ease-in-out ${
+          isScrollingUp ? 'fixed translate-y-0' : 'fixed -translate-y-full'
+        }`}
+      >
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
           <a
             href={paths.home}
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -68,15 +97,16 @@ export default function Navbar() {
           <div
             className={`${
               isButtonVisible ? "block" : "hidden"
-            } w-full md:block md:w-auto`}
+            } w-full md:block md:w-auto bg-opacity-50`}
             id="navbar-default"
           >
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gold md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gold md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-900 rounded-lg bg-gray-90 bg-opacity-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700  ">
+
               {navbarItems.map((item) => (
                 <li key={item.default}>
                   <a
                     href={item.url}
-                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold"
+                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold "
                   >
                     {lang === "es" ? item.es : item.default}
                   </a>
