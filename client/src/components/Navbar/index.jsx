@@ -1,11 +1,10 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../commons/Button";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
 import { navbarItems } from "../../data/navbarItems";
-<<<<<<< HEAD:src/components/Navbar/index.jsx
 import Languages from "./Languages";
 import { paths } from "@/data/paths";
 import { useLanguage } from "@/context/LanguageContext";
@@ -16,32 +15,6 @@ export default function Navbar() {
   const [isButtonVisible, setIsButtonVisible] = React.useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-=======
-import Languages from "./languages";
-import { paths } from "@/data/paths";
-
-export default function Navbar() {
-  const [lang, setLang] = useState("default");
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedLang = localStorage.getItem("lang") || "default";
-      setLang(storedLang);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("lang", lang);
-    }
-    console.log(lang);
-  }, [lang]);
-
-  const handleLanguageChange = (lang) => {
-    setLang(lang);
-  };
->>>>>>> feature-backend:client/src/components/Navbar/index.jsx
 
   const toggleButtonVisibility = () => {
     setIsButtonVisible(!isButtonVisible);
@@ -62,18 +35,20 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
   return (
     <div>
       <nav
-        className={`bg-gray-900 bg-opacity-50 backdrop-blur ${styles.customNavbar} w-full transition-transform duration-300 ease-in-out ${
-          isScrollingUp ? 'fixed translate-y-0' : 'fixed -translate-y-full'
+        className={`bg-gray-900 bg-opacity-50 backdrop-blur ${
+          styles.customNavbar
+        } w-full transition-transform duration-300 ease-in-out ${
+          isScrollingUp ? "fixed translate-y-0" : "fixed -translate-y-full"
         }`}
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
@@ -124,24 +99,15 @@ export default function Navbar() {
           <div
             className={`${
               isButtonVisible ? "block" : "hidden"
-<<<<<<< HEAD:src/components/Navbar/index.jsx
             } w-full md:block md:w-auto bg-opacity-50`}
-=======
-            } w-full md:block md:w-auto`}
->>>>>>> feature-backend:client/src/components/Navbar/index.jsx
             id="navbar-default"
           >
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-900 rounded-lg bg-gray-90 bg-opacity-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700  ">
-
               {navbarItems.map((item) => (
                 <li key={item.default}>
                   <a
                     href={item.url}
-<<<<<<< HEAD:src/components/Navbar/index.jsx
                     className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold "
-=======
-                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold"
->>>>>>> feature-backend:client/src/components/Navbar/index.jsx
                   >
                     {lang === "es" ? item.es : item.default}
                   </a>
