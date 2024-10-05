@@ -44,6 +44,10 @@ export default function BentoSection() {
           </div>
         </div>
       </div>
+      <div>
+        <div></div>
+        <div></div>
+      </div>
     </>
   );
 }
