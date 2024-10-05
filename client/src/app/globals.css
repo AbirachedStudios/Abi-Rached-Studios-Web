@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /*COLORS*/
+  --primary-0: #000000;
+  --primary-10: #160066;
+  --primary-20: #2900a0;
+  --primary-30: #3f25c1;
+  --primary-40: #5844d9;
+  --primary-50: #7160f4;
+  --primary-60: #8d7fff;
+  --primary-70: #a9a0ff;
+  --primary-80: #c6bfff;
+  --primary-90: #e4dfff;
+  --primary-95: #f3eeff;
+  --primary-99: #fffbff;
+  --primary-100: #ffffff;
+  --secondary-0: rgba(0, 0, 0, 0.35);
+  --secondary-10: #2a1700;
+  --secondary-20: #472a00;
+  --secondary-30: #653e00;
+  --secondary-40: #855300;
+  --secondary-50: #a76a00;
+  --secondary-60: #ca8100;
+  --secondary-70: #eb9a1c;
+  --secondary-80: #ffb95e;
+  --secondary-90: #ffddb7;
+  --secondary-95: #ffeede;
+  --tertiary-10: #1f1a1b;
+  --tertiary-20: #352f2f;
+  --tertiary-30: #4c4545;
+  --tertiary-40: #645d5d;
+  --tertiary-50: #7d7575;
+  --tertiary-60: #978f8f;
+  --tertiary-70: #b2a9a9;
+  --tertiary-80: #cec4c4;
+  --tertiary-90: #ebe0e0;
+  --tertiary-95: #f9eeee;
+  --error-10: #410002;
+  --error-20: #690005;
+  --error-30: #93000a;
+  --error-40: #ba1a1a;
+  --error-50: #de3730;
+  --error-60: #ff5449;
+  --error-70: #ff897d;
+  --error-80: #ffb4ab;
+  --error-90: #ffdad6;
+  --error-95: #ffedea;
+  --neutral-10: #1c1b1b;
+  --neutral-20: #313030;
+  --neutral-30: #484646;
+  --neutral-40: #605e5e;
+  --neutral-50: #797676;
+  --neutral-60: #939090;
+  --neutral-70: #adaaaa;
+  --neutral-80: #c9c6c5;
+  --neutral-90: #e5e2e1;
+  --neutral-95: #f4f0ef;
+  --gold: #d1a121;
+  /*TYPOGRAPHY*/
+  /*--------------------------------------------------------------------------------*/
+  --font-display-large: "Gadugi", sans-serif;
+  --display-large-font-size: 57px;
+  --display-large-line-height: 64px;
+  --display-large-letter-spacing: -0.25px;
+  /*--------------------------------------------------------------------------------*/
+  --font-display-medium: "Gadugi", sans-serif;
+  --display-medium-font-size: 45px;
+  --display-medium-line-height: 52px;
+  --display-medium-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-display-small: "Gadugi", sans-serif;
+  --display-small-font-size: 36px;
+  --display-small-line-height: 44px;
+  --display-small-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-headline-large: "Gadugi", sans-serif;
+  --headline-large-font-size: 32px;
+  --headline-large-line-height: 40px;
+  --headline-large-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-headline-medium: "Gadugi", sans-serif;
+  --headline-medium-font-size: 28px;
+  --headline-medium-line-height: 36px;
+  --headline-medium-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-headline-small: "Gadugi", sans-serif;
+  --headline-small-font-size: 24px;
+  --headline-small-line-height: 32px;
+  --headline-small-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-title-large: "Gadugi", sans-serif;
+  --title-large-font-size: 22px;
+  --title-large-line-height: 28px;
+  --title-large-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-title-large-bold: "Gadugi", sans-serif;
+  --title-large-bold-font-size: 22px;
+  --title-large-bold-line-height: 28px;
+  --title-large-bold-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-title-small: "Gadugi Medium", sans-serif;
+  --title-small-font-size: 14px;
+  --title-small-line-height: 20px;
+  --title-small-letter-spacing: 0.1px;
+  /*--------------------------------------------------------------------------------*/
+  --font-label-large: "Gadugi Medium", sans-serif;
+  --label-large-font-size: 14px;
+  --label-large-line-height: 20px;
+  --label-large-letter-spacing: 0.1;
+  /*--------------------------------------------------------------------------------*/
+  --font-label-medium: "Gadugi Medium", sans-serif;
+  --label-medium-font-size: 12px;
+  --label-medium-line-height: 16px;
+  --label-medium-letter-spacing: 0.5;
+  /*--------------------------------------------------------------------------------*/
+  --font-label-small: "Gadugi Medium", sans-serif;
+  --label-small-font-size: 11px;
+  --label-small-line-height: 16px;
+  --label-small-letter-spacing: 0.5;
+  /*--------------------------------------------------------------------------------*/
+  --font-body-large: "Gadugi", sans-serif;
+  --body-large-font-size: 16px;
+  --body-large-line-height: 24px;
+  --body-large-letter-spacing: 0.5;
+  /*--------------------------------------------------------------------------------*/
+  --font-body-medium: "Gadugi", sans-serif;
+  --body-medium-font-size: 14px;
+  --body-medium-line-height: 20px;
+  --body-medium-letter-spacing: 0.25;
+  /*--------------------------------------------------------------------------------*/
+  --font-body-small: "Gadugi", sans-serif;
+  --body-small-font-size: 12px;
+  --body-small-line-height: 16px;
+  --body-small-letter-spacing: 0.4;
+  /*--------------------------------------------------------------------------------*/
+  --font-underlined-link: "Gadugi", sans-serif;
+  --underlined-link-font-size: 22px;
+  --underlined-link-line-height: 28px;
+  --underlined-link-letter-spacing: 0;
+}
