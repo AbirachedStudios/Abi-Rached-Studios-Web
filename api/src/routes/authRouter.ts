@@ -12,6 +12,8 @@ import {
 
 const authRouter = Router();
 
+// http://localhost:3001/auth
+
 // Ruta para crear un nuevo usuario
 authRouter.post("/create", postUserHandler);
 
