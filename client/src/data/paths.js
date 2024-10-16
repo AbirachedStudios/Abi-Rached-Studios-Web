@@ -1,5 +1,6 @@
 export const paths = {
     home: "/",
     news: "/news",
-    terms: "/terms"
+    terms: "/terms",
+    positions: "/positions"
   };
