@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
+import team from "../../assets/img/team 1.png";
+import { Cta } from "@/components/commons/Cta";
+import { paths } from "@/data/paths";
 
 export default function BentoSection() {
   return (
     <>
       <div className="px-6 my-8">
         <div className="flex gap-4 justify-between items-center">
-          <div className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6 radius-"
-            style={{ width: "432px", height: "420px", borderRadius: "10px" }}>
-            <div
-              
-              className="text-center bg-neutral-10"
-            >
+          <div
+            className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6 radius-"
+            style={{ width: "432px", height: "420px", borderRadius: "10px" }}
+          >
+            <div className="text-center bg-neutral-10">
               <h2 className="font-headline-medium text-headline-medium text-gold font-bold  mb-6">
                 Heading Copy
               </h2>
@@ -44,9 +46,29 @@ export default function BentoSection() {
           </div>
         </div>
       </div>
-      <div>
-        <div></div>
-        <div></div>
+      <div className="flex gap-4 justify-between items-center px-6">
+        <div className=" " >
+          <div
+            className="flex flex-col justify-center items-center text-center bg-neutral-10"
+            style={{ width: "641px", height: "420px", borderRadius: "10px" }}
+          >
+            <h2 className="font-headline-medium text-headline-medium text-gold font-bold  mb-6">
+              ¡UNITE A NUESTRO EQUIPO!{" "}
+            </h2>
+            <p className="font-title-large text-title-large text-primary-100">
+              Sumate en esta aventura y explota tu potencial
+            </p>
+            <Cta className="mt-12" href={paths.positions}>VER POSICIONES</Cta>
+          </div>
+        </div>
+        <div>
+          <Image
+            src={team}
+            alt="Abi Rached Studios logo"
+            width={641}
+            height={417}
+          />{" "}
+        </div>
       </div>
     </>
   );

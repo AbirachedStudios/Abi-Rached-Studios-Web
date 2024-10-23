@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import HeroSection from '@/sections/hero';
 import Head from 'next/head';
 import BentoSection from '@/sections/bento';
+import Contact from '@/sections/contact';
 
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <BentoSection />
       <Link href={paths.news}>Go to News</Link>
       <Link href={paths.terms}>Go to Terms</Link>
+      <Contact />
     </div>
   );
 }

@@ -12,6 +12,7 @@
     "ars-landing": "file:",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
