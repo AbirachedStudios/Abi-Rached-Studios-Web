@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import { User } from "../models/Users";
-import { IUser } from "../utils/Interface";
+import { User } from "../model/Users";
+import { IUser } from "../../utils/Interface";
 import {
   createUser,
   updateUser,
@@ -16,43 +16,47 @@ dotenv.config();
 export const postUserHandler = async (req: Request, res: Response) => {
   const { name, email, password } = req.body as IUser;
   try {
+    // Verificar si el email ya está registrado
     let noRepeat = await User.findOne({
-      where: {
-        email: email,
-      },
+      where: { email },
     });
     if (noRepeat) {
-      res.status(400).send("ya se registro un usuario con el mismo mail");
+      return res.status(400).send("El correo ya está registrado.");
     }
-    const salt = bcrypt.genSaltSync();
-    const hashedPassword = bcrypt.hashSync(password, salt);
+
+    // Crear un nuevo usuario, el hook de Sequelize se encargará de hashear la contraseña
 
     const user: IUser = {
       ...req.body,
-      password: hashedPassword,
     };
-
     const newUser = await createUser(user);
+
     res.status(201).json({
       uid: newUser.id,
       name: newUser.name,
       email: newUser.email,
-      password: newUser.password,
     });
   } catch (error) {
-    console.error("ERROR in createUser controller: ", error);
-    throw error;
+    console.error("Error en postUserHandler: ", error);
+    res.status(500).json({ message: "Error interno del servidor" });
   }
 };
 
 export const updateUserHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const updatedData = req.body;
+  const updatedData = req.body; // Puede incluir la contraseña sin necesidad de hashearla manualmente
+
   try {
-    const user = await updateUser({ id: String(id), updatedData });
+    // Buscar al usuario por su ID
+    const user = await User.findByPk(id);
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+
+    // Actualizar el usuario, el hook se encargará del hasheo si la contraseña ha cambiado
+    await updateUser({ id: String(id), updatedData });
+
     return res.status(200).json(user);
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
@@ -90,19 +94,16 @@ export const getUserByIdHandler = async (req: Request, res: Response) => {
 
 export const deleteGame = async (req: Request, res: Response) => {
   try {
-    let { id } = req.params;
-    let forDelete = await User.findByPk(id);
-    if (id && forDelete) {
-      await User.destroy({
-        where: {
-          id: id,
-        },
-      });
+    const { id } = req.params;
+    const userToDelete = await User.findByPk(id);
+    if (!userToDelete) {
+      return res.status(404).json("Usuario no encontrado");
     }
-    res.status(201).json("Borrado exitosamente");
+    await User.destroy({ where: { id } });
+    res.status(200).json("Usuario borrado exitosamente");
   } catch (error) {
     res.status(400).json({
-      error: "No se recibieron los parámetros necesarios para borrar el Post",
+      error: "No se pudo borrar el usuario",
     });
   }
 };

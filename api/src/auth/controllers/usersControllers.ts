@@ -1,5 +1,5 @@
-import { IUser } from "../utils/Interface";
-import { User } from "../models/Users";
+import { IUser } from "../../utils/Interface";
+import { User } from "../model/Users";
 
 export const createUser = async (user: IUser) => {
   try {

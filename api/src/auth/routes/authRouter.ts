@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { refreshToken } from "../utils/jwt";
-import { validarJWT } from "../middlewares/validar-jwt";
-import { loginUser } from "../auth/auth";
+import { refreshToken } from "../services/jwt";
+import { validarJWT } from "../../middlewares/validar-jwt";
+import { loginUser } from "../services/authService";
 import {
   postUserHandler,
   updateUserHandler,
@@ -15,7 +15,7 @@ const authRouter = Router();
 // http://localhost:3001/auth
 
 // Ruta para crear un nuevo usuario
-authRouter.post("/create", postUserHandler);
+authRouter.post("/register", postUserHandler);
 
 // Ruta para actualizar un usuario existente
 authRouter.put("/update/:id", updateUserHandler);
@@ -29,7 +29,7 @@ authRouter.get("/usersById/:id", validarJWT, getUserByIdHandler);
 // // Ruta para borrar un usuario por ID
 authRouter.delete("/usersById/:id", validarJWT, deleteGame);
 
-authRouter.post("/create", loginUser);
+authRouter.post("/login", loginUser);
 authRouter.get("/renew", validarJWT, refreshToken);
 
 export default authRouter;

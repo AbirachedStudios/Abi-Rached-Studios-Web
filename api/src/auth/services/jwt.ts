@@ -4,32 +4,25 @@ require("dotenv").config();
 
 const jwtKey = process.env.JWT_SECRET_KEY as string;
 
-export const accessToken = (
+export const accessToken = async (
   id: string | number,
   name: string
 ): Promise<string> => {
+  const payload = { id, name };
   return new Promise((resolve, reject) => {
-    const payload = { id, name };
-    jwt.sign(
-      payload,
-      jwtKey,
-      {
-        expiresIn: "2h",
-      },
-      (err, token) => {
-        if (err) {
-          console.log(err);
-          reject("noi se pudo generar el token");
-        }
-        resolve(token as string);
+    jwt.sign(payload, jwtKey, { expiresIn: "2h" }, (err, token) => {
+      if (err) {
+        console.log(err);
+        reject("No se pudo generar el token");
       }
-    );
+      resolve(token as string);
+    });
   });
 };
 
 export const refreshToken = async (
-  res: Response,
-  req: Request
+  req: Request,
+  res: Response
 ): Promise<Response> => {
   const { id, name } = req.body as { id: number | string; name: string };
   try {

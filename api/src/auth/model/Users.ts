@@ -1,6 +1,7 @@
 import { Model, DataTypes, Optional } from "sequelize";
-import { sequelize } from "../db";
-import { IUser } from "../utils/Interface";
+import { sequelize } from "../../db";
+import { IUser } from "../../utils/Interface";
+import bcrypt from "bcrypt";
 import { UUID } from "crypto";
 
 interface UserCreationAttributes extends Optional<IUser, "id"> {}
@@ -18,6 +19,10 @@ export class User
   // Timestamps
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+
+  public async validatePassword(password: string): Promise<boolean> {
+    return await bcrypt.compare(password, this.password);
+  }
 }
 
 User.init(
@@ -48,5 +53,14 @@ User.init(
     sequelize,
     tableName: "usuarios",
     timestamps: true, // Sequelize crea automáticamente `createdAt` y `updatedAt`
+    hooks: {
+      // Hook que se ejecuta antes de que el usuario sea creado o actualizado
+      beforeSave: async (user: User) => {
+        if (user.changed("password")) {
+          const salt = await bcrypt.genSalt(10); // Generar el salt para hashear la contraseña
+          user.password = await bcrypt.hash(user.password, salt); // Hashear la contraseña
+        }
+      },
+    },
   }
 );
