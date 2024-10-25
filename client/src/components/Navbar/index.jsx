@@ -49,7 +49,7 @@ export default function Navbar() {
           styles.customNavbar
         } w-full transition-transform duration-300 ease-in-out ${
           isScrollingUp ? "fixed translate-y-0" : "fixed -translate-y-full"
-        }`}
+        } z-50`}
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
           <a

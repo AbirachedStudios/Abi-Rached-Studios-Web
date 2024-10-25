@@ -3,20 +3,32 @@
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
 import team from "../../assets/img/team 1.png";
+import smoke from "../../assets/img/smoke-bg.webp";
 import { Cta } from "@/components/commons/Cta";
 import { paths } from "@/data/paths";
 
 export default function BentoSection() {
   return (
-    <>
-      <div className="px-6 my-8">
+    <div
+      style={{
+        backgroundImage: `url(${smoke.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="relative px-6 my-8">
         <div className="flex gap-4 justify-between items-center">
           <div
-            className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6 radius-"
-            style={{ width: "432px", height: "420px", borderRadius: "10px" }}
+            className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6"
+            style={{
+              width: "432px",
+              height: "420px",
+              borderRadius: "10px",
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // Fondo con transparencia
+            }}
           >
-            <div className="text-center bg-neutral-10">
-              <h2 className="font-headline-medium text-headline-medium text-gold font-bold  mb-6">
+            <div className="text-center">
+              <h2 className="font-headline-medium text-headline-medium text-gold font-bold mb-6">
                 Heading Copy
               </h2>
               <p className="font-title-large text-title-large text-primary-100">
@@ -35,8 +47,13 @@ export default function BentoSection() {
             />{" "}
           </div>
           <div
-            className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6 radius-"
-            style={{ width: "432px", height: "420px", borderRadius: "10px" }}
+            className="h-screen flex justify-center items-center text-center bg-neutral-10 p-6"
+            style={{
+              width: "432px",
+              height: "420px",
+              borderRadius: "10px",
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // Fondo con transparencia
+            }}
           >
             <p className="font-title-large text-title-large text-primary-100">
               Nuestro equipo, compuesto por apasionados profesionales, busca
@@ -47,29 +64,36 @@ export default function BentoSection() {
         </div>
       </div>
       <div className="flex gap-4 justify-between items-center px-6">
-        <div className=" " >
+        <div>
           <div
-            className="flex flex-col justify-center items-center text-center bg-neutral-10"
-            style={{ width: "641px", height: "420px", borderRadius: "10px" }}
+            className="flex flex-col justify-center items-center text-center"
+            style={{
+              width: "641px",
+              height: "420px",
+              borderRadius: "10px",
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // Fondo con transparencia
+            }}
           >
-            <h2 className="font-headline-medium text-headline-medium text-gold font-bold  mb-6">
-              ¡UNITE A NUESTRO EQUIPO!{" "}
+            <h2 className="font-headline-medium text-headline-medium text-gold font-bold mb-6">
+              ¡UNITE A NUESTRO EQUIPO!
             </h2>
             <p className="font-title-large text-title-large text-primary-100">
               Sumate en esta aventura y explota tu potencial
             </p>
-            <Cta className="mt-12" href={paths.positions}>VER POSICIONES</Cta>
+            <Cta className="mt-12" href={paths.positions}>
+              VER POSICIONES
+            </Cta>
           </div>
         </div>
         <div>
           <Image
             src={team}
-            alt="Abi Rached Studios logo"
+            alt="Abi Rached Studios team"
             width={641}
             height={417}
           />{" "}
         </div>
       </div>
-    </>
+    </div>
   );
 }
