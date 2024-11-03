@@ -2,6 +2,7 @@ import { Router } from "express";
 import { refreshToken } from "../services/jwt";
 import { validarJWT } from "../../middlewares/validar-jwt";
 import { loginUser } from "../services/authService";
+import { requiresAuth } from "express-openid-connect";
 import {
   postUserHandler,
   updateUserHandler,
