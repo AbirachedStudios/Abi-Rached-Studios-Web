@@ -1,10 +1,14 @@
 import { IUser } from "../../utils/Interface";
 import { User } from "../model/Users";
 
+import { sendEmail } from "../../services/nodemailer";
+
 export const createUser = async (user: IUser) => {
   try {
     const { name, email, password } = user;
-    return await User.create({ name, email, password });
+    const newUser = await User.create({ name, email, password });
+    await sendEmail(email, 'USER_CREATED', name);
+    return newUser;
   } catch (error) {
     console.error("ERROR createdUser controllers: ", error);
     throw error;
