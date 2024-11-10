@@ -1,0 +1,71 @@
+.purpleRight {
+  background: rgb(151, 71, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(151, 71, 255, 1) 0%,
+    rgba(151, 71, 255, 0.5) 100%
+  );
+}
+
+.tealRight {
+  background: rgb(61, 157, 155);
+  background: linear-gradient(
+    90deg,
+    rgba(61, 157, 155, 1) 0%,
+    rgba(61, 157, 155, 0.5) 100%
+  );
+}
+
+.orangeRight {
+  background: rgb(230, 126, 34);
+  background: linear-gradient(
+    90deg,
+    rgba(230, 126, 34, 1) 0%,
+    rgba(230, 126, 34, 0.5) 100%
+  );
+}
+
+.goldRight {
+  background: rgb(209, 161, 33);
+  background: linear-gradient(
+    90deg,
+    rgba(209, 161, 33, 1) 0%,
+    rgba(209, 161, 33, 0.5) 100%
+  );
+}
+
+.goldLeft {
+  background: rgb(209, 161, 33);
+  background: linear-gradient(
+    90deg,
+    rgba(209, 161, 33, 0.5) 0%,
+    rgba(209, 161, 33, 1) 100%
+  );
+}
+
+.orangeLeft {
+  background: rgb(230, 126, 34);
+  background: linear-gradient(
+    90deg,
+    rgba(230, 126, 34, 0.5) 0%,
+    rgba(230, 126, 34, 1) 100%
+  );
+}
+
+.tealLeft{
+    background: rgb(61, 157, 155);
+  background: linear-gradient(
+    90deg,
+    rgba(61, 157, 155, 0.5) 0%,
+    rgba(61, 157, 155, 1) 100%
+  );
+}
+
+.purpleLeft{
+    background: rgb(151, 71, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(151, 71, 255, 0.5) 0%,
+    rgba(151, 71, 255, 1) 100%
+  );
+}
