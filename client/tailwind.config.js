@@ -65,6 +65,10 @@ module.exports = {
         'neutral-90': 'var(--neutral-90)',
         'neutral-95': 'var(--neutral-95)',
         'gold': 'var(--gold)',
+        'green-program': 'var(--green-program)',
+        'orange-design': 'var(--orange-design)',
+        'violet-design': 'var(--violet-design)',
+        'blue-marketing': 'var(--blue-marketing)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
