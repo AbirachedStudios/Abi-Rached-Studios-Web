@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { paths } from "@/data/paths";
+import { Cta } from "@/components/commons/Cta";
 
 export default function Contact() {
   const {
@@ -12,11 +13,10 @@ export default function Contact() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Puedes hacer un fetch o enviar los datos a tu API aquí
   };
 
   return (
-    <div className="px-6">
+    <div className="px-6 my-12">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex justify-between items-start p-6"
@@ -130,20 +130,16 @@ export default function Contact() {
               type="checkbox"
               {...register("novedades")}
               className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60"
-              
             />
             <label className="text-primary-100 ml-2">
               Quiero recibir novedades por mail
             </label>
           </div>
 
-          {/* Botón de enviar */}
-          <button type="submit" className="bg-yellow-500 rounded-md p-2">
-            Enviar
-          </button>
+          
         </div>
 
-        <div>
+        <div className="flex flex-col items-center">
           {/* Comentarios */}
           <div className="flex flex-col">
             <label className="text-primary-100 mb-2">
@@ -161,6 +157,10 @@ export default function Contact() {
               <span className="text-error-50">Comentarios son requeridos</span>
             )}
           </div>
+          {/* Botón de enviar */}
+          <Cta type="submit" className="bg-gold rounded-md p-2 w-[260px]">
+            Enviar
+          </Cta>
         </div>
       </form>
     </div>

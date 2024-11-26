@@ -1,18 +1,24 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 export default function Talents() {
   return (
-    <div className="relative bg-black text-white text-center  overflow-hidden h-[110vh]">
+    <div className="relative bg-black text-white text-center  overflow-hidden h-[110vh] my-12">
       {/* Contenedor del texto y botón */}
-      <div className="z-10 relative top-[40%] left-[20%]">
-        <h2 className="text-display-medium max-w-3xl">
+      <div className="z-10 relative  top-[50%]">
+        <h2 className="text-display-medium max-w-3xl relative left-[25%]">
           Conocé los <span className="text-[#8D7FFF]">talentos</span> detrás de
           cada uno de nuestros proyectos
         </h2>
-        <button className="mt-6 px-6 py-2 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors duration-300">
+        <p></p>
+        <Link
+          href="#"
+          className="mt-6 px-24 py-4 text-headline-small border-2 border-gold text-gold hover:text-primary-60 hover:border-primary-60 transition-colors duration-300 inline-block relative left-10"
+          style={{ borderRadius: "5px" }}
+        >
           NUESTRO EQUIPO
-        </button>
+        </Link>
       </div>
 
       {/* Barras de colores */}
@@ -37,11 +43,9 @@ export default function Talents() {
         ></div>
         <div
           className={`absolute top-[505px] left-0 w-[419px] h-[48px] opacity-80 rounded-r-full ${styles.tealLeft}`}
-          
         ></div>
         <div
           className={`absolute top-[590px] left-0 w-[519px] h-[48px] opacity-80 rounded-r-full ${styles.purpleLeft}`}
-          
         ></div>
       </div>
     </div>

@@ -13,10 +13,10 @@ export const Cta = ({
       onClick={onClick}
       href={href}
       role={role}
-      tabIndex="0" // Hace que el elemento sea focuseable
-      className={`cta ${className} bg-gold py-2 px-6 text-headline-small rounded-[5px] hover:bg-primary-60 transition duration-300 my-4`} // Permite personalizar la clase
+      tabIndex="0"
+      className={`cta ${className} bg-gold py-2 px-6 text-headline-small rounded-[5px] hover:bg-primary-60 transition duration-300 my-4`} 
       style={{ cursor: "pointer" }}
-      aria-pressed={role === "button" ? "false" : undefined} // Mejor accesibilidad para botones
+      aria-pressed={role === "button" ? "false" : undefined}
     >
       {children}
     </Tag>

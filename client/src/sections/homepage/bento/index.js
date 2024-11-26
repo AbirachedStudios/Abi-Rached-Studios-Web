@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import logo from "../../assets/img/ARS-VECTOR.png";
-import team from "../../assets/img/team 1.png";
-import smoke from "../../assets/img/smoke-bg.webp";
+import logo from "../../../assets/img/ARS-VECTOR.png";
+import team from "../../../assets/img/team 1.png";
+import smoke from "../../../assets/img/smoke-bg.webp";
 import { Cta } from "@/components/commons/Cta";
 import { paths } from "@/data/paths";
 
@@ -15,6 +15,7 @@ export default function BentoSection() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      className="my-12"
     >
       <div className="relative px-6 my-8">
         <div className="flex gap-4 justify-between items-center">
