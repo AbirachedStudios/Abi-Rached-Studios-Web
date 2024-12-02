@@ -47,7 +47,7 @@ export default function Navbar() {
       <nav
         className={`bg-gray-900 bg-opacity-50 backdrop-blur ${
           styles.customNavbar
-        } w-full transition-transform duration-300 ease-in-out ${
+        } w-[100vw] md:w-full transition-transform duration-300 ease-in-out ${
           isScrollingUp ? "fixed translate-y-0" : "fixed -translate-y-full"
         } z-50`}
       >

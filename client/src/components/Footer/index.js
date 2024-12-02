@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
+import footerLogo from "../../assets/img/ARS LOGO FOOTER.png";
 import linkedinIcon from "../../assets/icons/Linkedin Logo.svg";
 import facebookIcon from "../../assets/icons/Facebook Logo.svg";
 import instagramIcon from "../../assets/icons/Instagram Logo.svg";
@@ -14,30 +15,35 @@ const Footer = () => {
   const { lang } = useLanguage();
 
   return (
-    <footer className="bg-neutral-20 text-neutral-100 p-16 justify-between">
-      <div className="flex flex-col lg:flex-row items-start gap-16">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-8 max-w-[350px]">
-          <div className="flex flex-col items-center gap-7">
+    <footer className="bg-neutral-20 text-neutral-100 p-6 md:p-16 justify-between">
+      <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-16">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-8 max-w-full md:max-w-[350px] gap-6 md:gap-0">
+          <div className="flex flex-row md:flex-col md:items-center gap-32 md:gap-6">
             <a
               href={paths.home}
-              className="flex flex-wrap items-center space-x-3 rtl:space-x-reverse"
+              className="flex flex-col md:flex-row flex-wrap items-center md:space-x-3 md:rtl:space-x-reverse"
             >
               <Image
                 src={logo}
                 alt="Abi Rached Studios logo"
                 width={75}
                 height={75}
+                className="hidden md:block"
               />
-              <div>
-                <p className="font-headline-large text-headline-large text-gold font-bold">
-                  ABI RACHED
+              <Image src={footerLogo} alt="Abi Rached Studios logo"
+                width={165}
+                height={150}
+                className="block md:hidden"/>
+              <div className="flex flex-col text-center md:text-left hidden md:block">
+                <p className="md:font-headline-large text-headline-medium md:text-headline-large text-gold font-bold">
+                  ABIRACHED 
                 </p>
-                <p className="font-headline-large text-headline-large text-gold font-bold">
+                <p className="md:font-headline-large text-headline-medium md:text-headline-large text-gold font-bold">
                   STUDIOS
                 </p>
               </div>
             </a>
-            <div className="flex justify-center space-x-4">
+            <div className="flex justify-end md:justify-center space-x-4">
               <a href="#" className="text-neutral-100 hover:text-primary-60">
                 <Image src={linkedinIcon} alt="LinkedIn" />
               </a>
@@ -50,9 +56,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto flex flex-wrap flex-col md:flex-row gap-[6rem] mt-8">
-          <div>
-            <h3 className="text-gold mb-2 font-title-large-bold">
+        <div className="flex flex-wrap md:flex-row items-baseline md:items-start justify-between gap-6 md:gap-[6rem] mt-8">
+          <div className="">
+            <h3 className="text-gold mb-2 text-title-medium md:font-title-large-bold">
               {lang === "es" ? "NAVEGACIÓN" : "NAVIGATION"}
             </h3>
             <ul className="space-y-1">
@@ -67,9 +73,9 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="mt-4 md:mt-0">
-            <h3 className="text-gold mb-2 font-title-large-bold">
+          </div> 
+          <div className="mt-4 md:mt-0 order-3 md:order-2">
+            <h3 className="text-gold mb-2 text-title-medium md:font-title-large-bold">
               {lang === "es" ? "INSTITUCIONAL" : "INSTITUTIONAL"}
             </h3>
             <address className="not-italic space-y-1">
@@ -85,8 +91,8 @@ const Footer = () => {
               </p>
             </address>
           </div>
-          <div className="mt-4 md:mt-0">
-            <h3 className="text-gold mb-2 font-title-large-bold">
+          <div className="mt-4 md:mt-0 order-2 md:order-3">
+            <h3 className="text-gold mb-2 text-title-medium md:font-title-large-bold">
               {lang === "es"
                 ? "PRIVACIDAD Y TERMINOS DE USO"
                 : "PRIVACY AND TERMS OF USE"}

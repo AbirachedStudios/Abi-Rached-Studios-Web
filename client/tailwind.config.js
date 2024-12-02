@@ -83,6 +83,7 @@ module.exports = {
         'headline-medium': 'var(--font-headline-medium)',
         'headline-small': 'var(--font-headline-small)',
         'title-large': 'var(--font-title-large)',
+        'title-medium': 'var(--font-title-medium)',
         'title-small': 'var(--font-title-small)',
         'label-large': 'var(--font-label-large)',
         'label-medium': 'var(--font-label-medium)',

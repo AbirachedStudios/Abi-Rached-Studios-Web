@@ -105,6 +105,11 @@
   --title-large-bold-line-height: 28px;
   --title-large-bold-letter-spacing: 0;
   /*--------------------------------------------------------------------------------*/
+  --font-title-medium: "Gadugi", sans-serif;
+  --title-medium-font-size: 16px;
+  --title-medium-line-height: 22px;
+  --title-medium-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
   --font-title-small: "Gadugi Medium", sans-serif;
   --title-small-font-size: 14px;
   --title-small-line-height: 20px;

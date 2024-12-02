@@ -17,19 +17,22 @@ export default function Contact() {
 
   return (
     <div className="px-6 my-12">
+      <h2 className="text-headline-small md:text-display-small text-gold text-center mb-6 md:mb-0">
+        CONTACTO Y SOPORTE
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex justify-between items-start p-6"
+        className="flex flex-col md:flex-row justify-between items-start p-0 md:p-6"
       >
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 w-[380px] md:w-[583px]">
           {/* Email */}
-          <div className="flex flex-col">
+          <div className="flex flex-col w-[380px] md:w-[583px]">
             <label className="text-primary-100 mb-2">
               Email <span className="text-error-50">*</span>
             </label>
             <input
               {...register("email", { required: true })}
-              className={`border-2 rounded-md p-2 w-[583px] h-[60px] bg-primary-0 text-primary-100 transition-all duration-500 ${
+              className={`border-2 rounded-md p-2 w-[380px] md:w-[583px] h-[50px] md:h-[60px] bg-primary-0 text-primary-100 transition-all duration-500 ${
                 errors.email
                   ? "border-error-50 focus:outline-error-50"
                   : "border-primary-60 focus:outline-primary-80"
@@ -37,7 +40,7 @@ export default function Contact() {
               placeholder="email@mail.com"
             />
             {errors.email && (
-              <span className="text-error-50">Email es requerido</span>
+              <span className="text-error-50 w-[100vw] md:w-[583px] h-[50px] md:h-[60px]">Email es requerido</span>
             )}
           </div>
 
@@ -48,7 +51,7 @@ export default function Contact() {
             </label>
             <input
               {...register("gamerId", { required: true })}
-              className={`border-2 rounded-md p-2 w-[583px] h-[60px] bg-primary-0 text-primary-100 transition-all duration-500 ${
+              className={`border-2 rounded-md p-2 w-[380px] md:w-[583px] h-[50px] md:h-[60px] bg-primary-0 text-primary-100 transition-all duration-500 ${
                 errors.gamerId
                   ? "border-error-50 focus:outline-error-50"
                   : "border-primary-60 focus:outline-primary-80"
@@ -56,7 +59,7 @@ export default function Contact() {
               placeholder="XXXXXXXX"
             />
             {errors.gamerId && (
-              <span className="text-error-50">Gamer ID es requerido</span>
+              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] md:h-[60px]">Gamer ID es requerido</span>
             )}
           </div>
 
@@ -65,10 +68,10 @@ export default function Contact() {
             <label className="text-primary-100 mb-2">
               Motivo de contacto <span className="text-error-50">*</span>
             </label>
-            <div className="relative w-[583px] h-[60px]">
+            <div className="relative w-[380px] md:w-[583px] h-[50px] md:h-[60px]">
               <select
                 {...register("motivo", { required: true })}
-                className={`border-2 rounded-md p-2 w-full h-full bg-primary-0 text-primary-100 appearance-none transition-all duration-500 ${
+                className={`border-2 rounded-md p-2 w-[380px] md:w-[583px] h-[50px] md:h-[60px] bg-primary-0 text-primary-100 transition-all duration-500 ${
                   errors.motivo
                     ? "border-error-50 focus:outline-error-50"
                     : "border-primary-60 focus:outline-primary-80"
@@ -79,31 +82,15 @@ export default function Contact() {
                 <option value="consulta">Consulta</option>
               </select>
               {/* Custom Arrow */}
-              <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                <svg
-                  className="w-6 h-6 text-primary-60"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </div>
             </div>
             {errors.motivo && (
-              <span className="text-error-50">Este campo es requerido</span>
+              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] md:h-[60px]">Este campo es requerido</span>
             )}
           </div>
 
           {/* Términos y condiciones */}
           <div>
-            <div className="flex items-center mb-2">
+            <div className="hidden md:flex items-center mb-2">
               <input
                 type="checkbox"
                 {...register("terminos", { required: true })}
@@ -125,29 +112,27 @@ export default function Contact() {
           </div>
 
           {/* Checkbox para novedades por mail */}
-          <div>
+          <div className="hidden md:block">
             <input
               type="checkbox"
               {...register("novedades")}
-              className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60"
+              className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60 "
             />
             <label className="text-primary-100 ml-2">
               Quiero recibir novedades por mail
             </label>
           </div>
-
-          
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-start md:items-center">
           {/* Comentarios */}
           <div className="flex flex-col">
-            <label className="text-primary-100 mb-2">
+            <label className="text-primary-100 mb-2 w-[380px] md:w-[583px] ">
               Dejanos tus comentarios <span className="text-error-50">*</span>
             </label>
             <textarea
               {...register("comentarios", { required: true })}
-              className={`border-2 rounded-md p-2 w-[583px] h-[381px] bg-primary-0 text-primary-100 transition-all duration-500 ${
+              className={`border-2 rounded-md p-2 w-[380px] md:w-[583px] h-[150px] md:h-[381px] bg-primary-0 text-primary-100 transition-all duration-500 ${
                 errors.comentarios
                   ? "border-error-50 focus:outline-error-50"
                   : "border-primary-60 focus:outline-primary-80"
@@ -157,8 +142,19 @@ export default function Contact() {
               <span className="text-error-50">Comentarios son requeridos</span>
             )}
           </div>
+          <div className="block md:hidden my-2">
+            <input
+              type="checkbox"
+              {...register("novedades")}
+              className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60 "
+            />
+            <label className="text-primary-100 ml-2">
+              Quiero recibir novedades por mail
+            </label>
+          </div>
+          <span className="text-primary-100 block md:hidden">Al enviar estas aceptando nuestros <Link href="#" className="text-primary-60">Términos y condiciones</Link> </span>
           {/* Botón de enviar */}
-          <Cta type="submit" className="bg-gold rounded-md p-2 w-[260px]">
+          <Cta type="submit" className="bg-gold text-title-large rounded-md p-2 w-[260px]">
             Enviar
           </Cta>
         </div>
