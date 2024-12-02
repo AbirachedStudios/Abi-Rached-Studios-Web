@@ -6,9 +6,12 @@ import team from "../../../assets/img/team 1.png";
 import smoke from "../../../assets/img/smoke-bg.webp";
 import { Cta } from "@/components/commons/Cta";
 import { paths } from "@/data/paths";
+import { useLanguage } from "@/context/LanguageContext";
+import { bentoItems } from "@/data/bentoItems";
 import styles from "./styles.module.css";
 
 export default function BentoSection() {
+  const { lang } = useLanguage();
   return (
     <div
       style={{
@@ -26,12 +29,10 @@ export default function BentoSection() {
           >
             <div className="text-center">
               <h2 className="md:font-headline-medium text-title-medium md:text-headline-medium text-gold font-bold mb-6">
-                Heading Copy
+                {lang === "es" ? bentoItems.heading.es : bentoItems.heading.default}
               </h2>
               <p className="md:font-title-large text-title-small md:text-title-large text-primary-100">
-                ¡Es nuestra filosofía y nuestro compromiso! Vivimos la pasión
-                por jugar, la creatividad al crear y la conexión con nuestra
-                comunidad.
+              {lang === "es" ? bentoItems.philosophy.es : bentoItems.philosophy.default}
               </p>
             </div>
           </div>
@@ -51,12 +52,11 @@ export default function BentoSection() {
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
             <p className="md:font-title-large text-title-small md:text-title-large text-primary-100 px-2">
-              Nuestro equipo,{" "}
+              {lang === "es" ? bentoItems.team1.es : bentoItems.team1.default}{" "}
               <span className="hidden md:block">
-                compuesto por apasionados profesionales,
+                {lang === "es" ? bentoItems.hidden.es : bentoItems.hidden.default}
               </span>{" "}
-              busca crear experiencias innovadoras y emocionantes en el
-              desarrollo de videojuegos.
+              {lang === "es" ? bentoItems.team2.es : bentoItems.team2.default}
             </p>
           </div>
           <div>
@@ -73,19 +73,18 @@ export default function BentoSection() {
           <div
             className="flex flex-col justify-center items-center text-center width-[100vw] md:w-[641px] md:h-[420px] px-4 py-2 md:p-0"
             style={{
-              
               borderRadius: "10px",
               backgroundColor: "rgba(255, 255, 255, 0.1)",
             }}
           >
             <h2 className="md:font-headline-medium text-title-medium md:text-headline-medium text-gold font-bold mb-6">
-              ¡UNITE A NUESTRO EQUIPO!
+              {lang === "es" ? bentoItems.join.title.es : bentoItems.join.title.default}
             </h2>
             <p className="md:font-title-large text-title-small md:text-title-large text-primary-100 px-2">
-              Sumate en esta aventura y explota tu potencial
+              {lang === "es" ? bentoItems.join.description.es : bentoItems.join.description.default}
             </p>
             <Cta className="mt-12" href={paths.positions}>
-              VER POSICIONES
+              {lang === "es" ? bentoItems.join.cta.es : bentoItems.join.cta.default}
             </Cta>
           </div>
         </div>

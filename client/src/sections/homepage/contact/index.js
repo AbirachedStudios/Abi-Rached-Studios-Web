@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { paths } from "@/data/paths";
 import { Cta } from "@/components/commons/Cta";
+import { contactItems, selectOptions } from "@/data/contactItems";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
+  const { lang } = useLanguage();
   const {
     register,
     handleSubmit,
@@ -18,7 +21,7 @@ export default function Contact() {
   return (
     <div className="px-6 my-12">
       <h2 className="text-headline-small md:text-display-small text-gold text-center mb-6 md:mb-0">
-        CONTACTO Y SOPORTE
+        {lang === "es" ? contactItems.heading.es : contactItems.heading.default}
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}

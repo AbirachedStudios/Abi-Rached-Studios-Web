@@ -1,15 +1,22 @@
+"use client";
+
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { talentItems } from "@/data/talentsItems";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Talents() {
+  const { lang } = useLanguage();
   return (
     <div className="relative bg-black text-white text-center  overflow-hidden h-[110vh] my-12 p-4 md:p-0">
       {/* Contenedor del texto y botón */}
       <div className="z-10 relative top-[30%] md:top-[50%]">
         <h2 className="text-headline-small md:text-display-medium w-full md:max-w-3xl relative left-0 md:left-[25%]">
-          Conocé los <span className="text-[#8D7FFF]">talentos</span> detrás de
-          cada uno de nuestros proyectos
+          {lang === "es"
+            ? talentItems.heading1.es
+            : talentItems.heading1.default}{" "}
+          <span className="text-[#8D7FFF]">{lang === "es" ? talentItems.span.es : talentItems.span.default }</span> {lang === "es" ? talentItems.heading2.es : talentItems.heading2.default}
         </h2>
         <p></p>
         <Link
@@ -17,7 +24,7 @@ export default function Talents() {
           className="mt-6 px-12 py-4 w-full md:w-auto md:px-24 md:py-4 text-title-large md:text-headline-small border-2 border-gold text-gold hover:text-primary-60 hover:border-primary-60 transition-colors duration-300 inline-block relative left-0 md:left-10"
           style={{ borderRadius: "5px" }}
         >
-          NUESTRO EQUIPO
+          {lang === "es" ? talentItems.cta.es : talentItems.cta.default}
         </Link>
       </div>
 
