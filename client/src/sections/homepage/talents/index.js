@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { talentItems } from "@/data/talentsItems";
+import { talentItems } from "@/data/homepage/talentsItems";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Talents() {

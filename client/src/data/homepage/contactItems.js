@@ -8,7 +8,7 @@ export const contactItems = {
     es: "Email",
   },
   emailError: {
-    default: "Email es requerido",
+    default: "Email is required",
     es: "Email es requerido",
   },
   gamerIdLabel: {
@@ -16,7 +16,7 @@ export const contactItems = {
     es: "Gamer ID",
   },
   gamerIdError: {
-    default: "Gamer ID es requerido",
+    default: "Gamer ID is required",
     es: "Gamer ID es requerido",
   },
   reason: {
@@ -54,6 +54,10 @@ export const contactItems = {
   textFieldError: {
     default: "Comments are required",
     es: "Comentarios son requeridos"
+  },
+  termsNotice: {
+    default: "By submitting this form, you agree to the ",
+    es: "Al enviar este formulario, aceptas nuestros "
   }
 };
 

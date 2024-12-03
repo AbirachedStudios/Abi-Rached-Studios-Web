@@ -1,9 +1,10 @@
 "use client";
 
 import { Cta } from "@/components/commons/Cta";
-import backgroundImg from "../../../assets/img/herobg.svg";
+// import backgroundImg from "../../../assets/img/herobg.svg";
+import backgroundImg from "../../../assets/img/c12.jpg";
 import { useLanguage } from "@/context/LanguageContext";
-import { heroItems } from "@/data/heroItems";
+import { heroItems } from "@/data/homepage/heroItems";
 
 export default function HeroSection() {
   const { lang } = useLanguage();

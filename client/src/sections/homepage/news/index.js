@@ -9,7 +9,7 @@ import square6 from "../../../assets/img/newsimg6.webp";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { newsItems } from "@/data/newsItemsSection";
+import { newsItems } from "@/data/homepage/newsItemsSection";
 
 export default function NewsSectionHomepage() {
   const { lang } = useLanguage();

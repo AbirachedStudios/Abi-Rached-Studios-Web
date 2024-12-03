@@ -2,7 +2,7 @@
 
 import smoke from "../../../assets/img/yellow-smoke.webp";
 import { Cta } from "../../../components/commons/Cta";
-import { currentGame } from "@/data/currentGameItems";
+import { currentGame } from "@/data/homepage/currentGameItems";
 import { useLanguage } from "@/context/LanguageContext";
 export default function CurrentGame() {
   const { lang } = useLanguage();

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../commons/Button";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
-import { navbarItems } from "../../data/navbarItems";
+import { navbarItems } from "../../data/homepage/navbarItems";
 import Languages from "./Languages";
 import { paths } from "@/data/paths";
 import { useLanguage } from "@/context/LanguageContext";

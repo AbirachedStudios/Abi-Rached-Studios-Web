@@ -7,7 +7,7 @@ import smoke from "../../../assets/img/smoke-bg.webp";
 import { Cta } from "@/components/commons/Cta";
 import { paths } from "@/data/paths";
 import { useLanguage } from "@/context/LanguageContext";
-import { bentoItems } from "@/data/bentoItems";
+import { bentoItems } from "@/data/homepage/bentoItems";
 import styles from "./styles.module.css";
 
 export default function BentoSection() {

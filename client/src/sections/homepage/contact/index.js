@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { paths } from "@/data/paths";
 import { Cta } from "@/components/commons/Cta";
-import { contactItems, selectOptions } from "@/data/contactItems";
+import { contactItems, selectOptions } from "@/data/homepage/contactItems";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
@@ -43,7 +43,11 @@ export default function Contact() {
               placeholder="email@mail.com"
             />
             {errors.email && (
-              <span className="text-error-50 w-[100vw] md:w-[583px] h-[50px] md:h-[60px]">Email es requerido</span>
+              <span className="text-error-50 w-[100vw] md:w-[583px] h-[50px] ">
+                {lang === "es"
+                  ? contactItems.emailError.es
+                  : contactItems.emailError.default}
+              </span>
             )}
           </div>
 
@@ -62,14 +66,21 @@ export default function Contact() {
               placeholder="XXXXXXXX"
             />
             {errors.gamerId && (
-              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] md:h-[60px]">Gamer ID es requerido</span>
+              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] ">
+                {lang === "es"
+                  ? contactItems.gamerIdError.es
+                  : contactItems.gamerIdError.default}
+              </span>
             )}
           </div>
 
           {/* Motivo de contacto */}
           <div className="flex flex-col relative">
             <label className="text-primary-100 mb-2">
-              Motivo de contacto <span className="text-error-50">*</span>
+              {lang === "es"
+                ? contactItems.reason.es
+                : contactItems.reason.default}{" "}
+              <span className="text-error-50">*</span>
             </label>
             <div className="relative w-[380px] md:w-[583px] h-[50px] md:h-[60px]">
               <select
@@ -80,17 +91,29 @@ export default function Contact() {
                     : "border-primary-60 focus:outline-primary-80"
                 } focus:outline-4`}
               >
-                <option value="">Seleccioná un motivo</option>
-                <option value="soporte">Soporte</option>
-                <option value="consulta">Consulta</option>
+                {/* Placeholder */}
+                <option value="">
+                  {lang === "es"
+                    ? selectOptions.placeholder.es
+                    : selectOptions.placeholder.default}
+                </option>
+
+                {/* Map Options */}
+                {selectOptions.options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {lang === "es" ? option.label.es : option.label.default}
+                  </option>
+                ))}
               </select>
-              {/* Custom Arrow */}
             </div>
             {errors.motivo && (
-              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] md:h-[60px]">Este campo es requerido</span>
+              <span className="text-error-50 w-[380px] md:w-[583px] h-[50px] ">
+                {lang === "es"
+                  ? contactItems.reasonError.es
+                  : contactItems.reasonError.default}
+              </span>
             )}
           </div>
-
           {/* Términos y condiciones */}
           <div>
             <div className="hidden md:flex items-center mb-2">
@@ -100,15 +123,21 @@ export default function Contact() {
                 className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded focus:ring-primary-60"
               />
               <label className="text-primary-100 ml-2">
-                Acepto los{" "}
+                {lang === "es"
+                  ? contactItems.termsCheckbox.es
+                  : contactItems.termsCheckbox.default}{" "}
                 <Link href={paths.terms} className="text-gold underline">
-                  términos y condiciones
+                  {lang === "es"
+                    ? contactItems.termsCheckboxLink.es
+                    : contactItems.termsCheckboxLink.default}
                 </Link>{" "}
                 <span className="text-error-50">*</span>
               </label>
               {errors.terminos && (
                 <span className="text-error-50 ml-2">
-                  Debes aceptar los términos y condiciones
+                  {lang === "es"
+                    ? contactItems.termsCheckboxError.es
+                    : contactItems.termsCheckboxError.default}
                 </span>
               )}
             </div>
@@ -122,7 +151,9 @@ export default function Contact() {
               className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60 "
             />
             <label className="text-primary-100 ml-2">
-              Quiero recibir novedades por mail
+              {lang === "es"
+                ? contactItems.newsAgree.es
+                : contactItems.newsAgree.default}
             </label>
           </div>
         </div>
@@ -131,7 +162,10 @@ export default function Contact() {
           {/* Comentarios */}
           <div className="flex flex-col">
             <label className="text-primary-100 mb-2 w-[380px] md:w-[583px] ">
-              Dejanos tus comentarios <span className="text-error-50">*</span>
+              {lang === "es"
+                ? contactItems.textField.es
+                : contactItems.textField.default}{" "}
+              <span className="text-error-50">*</span>
             </label>
             <textarea
               {...register("comentarios", { required: true })}
@@ -142,7 +176,11 @@ export default function Contact() {
               } focus:outline-4`}
             />
             {errors.comentarios && (
-              <span className="text-error-50">Comentarios son requeridos</span>
+              <span className="text-error-50">
+                {lang === "es"
+                  ? contactItems.textFieldError.es
+                  : contactItems.textFieldError.default}
+              </span>
             )}
           </div>
           <div className="block md:hidden my-2">
@@ -152,13 +190,29 @@ export default function Contact() {
               className="form-checkbox h-4 w-4 color-primary-60 border-gray-300 rounded checked:ring-primary-60 "
             />
             <label className="text-primary-100 ml-2">
-              Quiero recibir novedades por mail
+              {lang === "es"
+                ? contactItems.newsAgree.es
+                : contactItems.newsAgree.default}
             </label>
           </div>
-          <span className="text-primary-100 block md:hidden">Al enviar estas aceptando nuestros <Link href="#" className="text-primary-60">Términos y condiciones</Link> </span>
+          <span className="text-primary-100 block md:hidden">
+            {lang === "es"
+              ? contactItems.termsNotice.es
+              : contactItems.termsNotice.default}{" "}
+            <Link href="#" className="text-primary-60">
+              {lang === "es"
+                ? contactItems.termsCheckboxLink.es
+                : contactItems.termsCheckboxLink.default}
+            </Link>{" "}
+          </span>
           {/* Botón de enviar */}
-          <Cta type="submit" className="bg-gold text-title-large rounded-md p-2 w-[260px]">
-            Enviar
+          <Cta
+            type="submit"
+            className="bg-gold text-title-large rounded-md p-2 w-[260px]"
+          >
+            {lang === "es"
+              ? contactItems.submitButton.es
+              : contactItems.submitButton.default}
           </Cta>
         </div>
       </form>
