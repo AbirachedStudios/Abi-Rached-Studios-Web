@@ -10,11 +10,11 @@ export default function HeroSection(){
         const {lang} = useLanguage(); return (
         <div className="relative bg-black text-white text-center overflow-hidden h-[70vh] mt-24 md:mt-32 p-4 md:p-0">
           {/* Contenedor del texto y botón */}
-          <div className="z-10 relative top-[48%] md:top-[25%]">
+          <div className="z-10 relative top-[48%] md:top-[35%]">
             <h2 className="text-headline-small text-gold md:text-display-medium w-full md:max-w-3xl relative left-0 md:left-[20%]">
               POSICIONES ABIERTAS
             </h2>
-            <p></p>
+            
             
           </div>
   

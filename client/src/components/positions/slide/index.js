@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import Image from "next/image";
 
 // Componente de tarjeta individual
 const PositionCard = ({
@@ -13,7 +14,9 @@ const PositionCard = ({
   title,
   game,
   url,
+  info,
   colorClass,
+  apply,
   isActive,
   onHover,
   onLeave,
@@ -31,28 +34,33 @@ const PositionCard = ({
     {isActive ? (
       // Contenido detallado si la tarjeta está activa
       <div className="flex flex-col items-center text-center">
-        <div className={`text-4xl mb-4 text-${colorClass}`}>{icon}</div>
+        <div className={`text-4xl mb-4 text-${colorClass}`}>
+          <Image src={`/assets/icons/${icon}`} width={60} height={60} />
+        </div>
         <h3 className={`text-${colorClass} text-headline-small`}>{title}</h3>
-        <p className="text-sm text-gray-300 mb-4">
-          Aquí puedes incluir información más detallada sobre el puesto, como
-          responsabilidades, requisitos y habilidades necesarias.
-        </p>
+        <p className="text-sm text-gray-300 mb-4">{info}</p>
         <button
-          className="px-4 py-2 bg-gold text-black rounded-md font-bold hover:bg-yellow-600 transition"
+          className="px-4 py-2 bg-none text-title-large text-gold border-[1px] md:w-full border-gold rounded-md hover:bg-primary-60 hover:text-primary-0 hover:border-primary-60 transition"
           onClick={(e) => {
             e.preventDefault();
             alert("¡Aplicación en desarrollo!");
           }}
         >
-          Aplicar ahora
+          {apply}
         </button>
       </div>
     ) : (
       // Contenido estándar de la tarjeta
       <>
-        <div className={`text-4xl mb-4 text-${colorClass}`}>{icon}</div>
+        <div className={`text-4xl mb-4 text-${colorClass}`}>
+          <Image src={`/assets/icons/${icon}`} width={120} height={120} />
+        </div>
         <h3 className="font-bold title-medium text-gold">{game}</h3>
-        <p className={`text-${colorClass} text-headline-small`}>{title}</p>
+        <p
+          className={`text-${colorClass} text-headline-small text-center mt-2`}
+        >
+          {title}
+        </p>
       </>
     )}
   </a>
@@ -81,6 +89,8 @@ export default function PositionSlide() {
             icon={position.icon}
             title={lang === "es" ? position.title.es : position.title.default}
             game={lang === "es" ? position.game.es : position.game.default}
+            info={lang === "es" ? position.info.es : position.info.default}
+            apply={lang === "es" ? position.apply.es : position.apply.default}
             url={position.url}
             colorClass={position.colorClass}
             isActive={activeId === position.id}
@@ -107,6 +117,8 @@ export default function PositionSlide() {
                   lang === "es" ? position.title.es : position.title.default
                 }
                 game={lang === "es" ? position.game.es : position.game.default}
+                info={lang === "es" ? position.info.es : position.info.default}
+                apply={lang === "es" ? position.apply.es : position.apply.default}
                 url={position.url}
                 colorClass={position.colorClass}
                 isActive={activeId === position.id}

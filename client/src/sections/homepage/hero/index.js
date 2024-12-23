@@ -17,14 +17,14 @@ export default function HeroSection() {
       }}
     >
       {/* Content */}
-      <div className="relative z-10 text-primary-100 text-center md:text-left max-w-xl mb-16 px-6 md:mb-0 flex flex-col py-32 items-center md:items-start md:justify-center">
+      <div className="relative z-10 text-primary-100 text-center md:text-left w-[100vw] md:w-[50%] mb-16 px-6 md:mb-0 flex flex-col py-32 items-center md:items-start md:justify-center">
         <h1 className="text-headline-large font-headline-large md:text-4xl lg:text-5xl font-bold text-gold mb-4 leading-tight">
           {lang === "es" ? heroItems.h1.es : heroItems.h1.default}
         </h1>
         <p className="text-body-large font-body-large md:text-xl mb-6 leading-relaxed">
           {lang === "es" ? heroItems.copy.es : heroItems.copy.default}
         </p>
-        <Cta className="text-black py-3 px-6 transition" style={{ width: "100%" }}>
+        <Cta className="text-black text-label-large md:text-title-large py-2 px-3 md:py-3 md:px-6 transition" style={{ width: "100%" }}>
           {lang === "es" ? heroItems.cta.es : heroItems.cta.default}
         </Cta>
       </div>
