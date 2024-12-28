@@ -19,12 +19,12 @@ export default function BentoSection() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className={`my-32 md:my-12 ${styles.imgSmoke}`}
+      className={`my-32 md:my-12 ${styles.imgSmoke} `}
     >
-      <div className="relative px-6 my-8">
-        <div className="flex flex-row gap-2 md:gap-4 justify-between items-center flex-wrap">
+      <div className="relative pt-12 my-8 w-full justify-center">
+        <div className="flex flex-row gap-2 md:gap-4 justify-center items-center flex-wrap">
           <div
-            className={`h-screen flex justify-center items-center text-center bg-neutral-10 py-4 md:p-6 ${styles.box}`}
+            className={`h-screen flex justify-center items-center text-center bg-neutral-10 py-4 md:p-6 ${styles.box} grow-1`}
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
             <div className="text-center">
@@ -68,7 +68,7 @@ export default function BentoSection() {
           </div>
         </div>
       </div>
-      <div className="flex gap-0 md:gap-4 justify-between items-center px-6 mt-[-5%] md:mt-0">
+      <div className="flex gap-0 md:gap-4 pb-12 justify-center items-center px-6 md:mt-0">
         <div className="w-full md:w-[641px] md:h-[420px] md:p-0">
           <div
             className="flex flex-col justify-center items-center text-center width-[100vw] md:w-[641px] md:h-[420px] px-4 py-2 md:p-0"
