@@ -9,6 +9,8 @@ import {
   getUserByIdController,
   recoverPassword,
   resetPassword,
+  softDeleteUser,
+  restoreUser,
 } from "../controllers/usersControllers";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
@@ -91,18 +93,14 @@ export const getUserByIdHandler = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteGame = async (req: Request, res: Response) => {
+export const deleteUserHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const userToDelete = await User.findByPk(id);
-    if (!userToDelete) {
-      return res.status(404).json("Usuario no encontrado");
-    }
-    await User.destroy({ where: { id } });
-    res.status(200).json("Usuario borrado exitosamente");
-  } catch (error) {
+    const result = await softDeleteUser(id);
+    res.status(200).json(result);
+  } catch (error: any) {
     res.status(400).json({
-      error: "No se pudo borrar el usuario",
+      error: error.message || "No se pudo desactivar el usuario",
     });
   }
 };
@@ -132,5 +130,17 @@ export const resetPasswordHandler = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error: any) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+export const restoreUserHandler = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = await restoreUser(id);
+    res.status(200).json(result);
+  } catch (error: any) {
+    res.status(400).json({
+      error: error.message || "No se pudo restaurar el usuario",
+    });
   }
 };

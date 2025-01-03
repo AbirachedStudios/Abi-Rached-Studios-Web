@@ -7,9 +7,10 @@ import {
   updateUserHandler,
   getUserHandler,
   getUserByIdHandler,
-  deleteGame,
   recoverPasswordHandler,
   resetPasswordHandler,
+  deleteUserHandler,
+  restoreUserHandler,
 } from "../handlers/usersHandlers";
 
 const authRouter = Router();
@@ -28,9 +29,6 @@ authRouter.get("/getAll", validarJWT, getUserHandler);
 // // Ruta para obtener un usuario por ID
 authRouter.get("/usersById/:id", validarJWT, getUserByIdHandler);
 
-// // Ruta para borrar un usuario por ID
-authRouter.delete("/usersById/:id", validarJWT, deleteGame);
-
 authRouter.post("/login", loginUser);
 authRouter.get("/renew", refreshToken);
 
@@ -39,5 +37,11 @@ authRouter.post("/recover-password", recoverPasswordHandler);
 
 // Ruta para restablecer la contraseña
 authRouter.post("/reset-password", resetPasswordHandler);
+
+// Ruta para soft delete de usuario
+authRouter.delete("/usersById/:id", validarJWT, deleteUserHandler);
+
+// Opcional: Ruta para restaurar usuario
+authRouter.post("/restore/:id", validarJWT, restoreUserHandler);
 
 export default authRouter;

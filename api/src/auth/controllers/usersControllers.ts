@@ -184,3 +184,38 @@ export const resetPassword = async (token: string, newPassword: string) => {
     throw new Error("Error al restablecer la contraseña");
   }
 };
+
+export const softDeleteUser = async (id: string) => {
+  try {
+    const user = await User.findByPk(id);
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    // Soft delete del usuario
+    await user.destroy(); // Con paranoid: true, esto realiza un soft delete
+
+    // Enviar email de notificación
+    await sendEmail(user.email, "USER_DELETED", user.name);
+
+    return { message: "Usuario desactivado exitosamente" };
+  } catch (error) {
+    console.error("ERROR softDeleteUser controllers: ", error);
+    throw error;
+  }
+};
+
+export const restoreUser = async (id: string) => {
+  try {
+    const user = await User.findByPk(id, { paranoid: false }); // Incluye registros "eliminados"
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    await user.restore(); // Restaura el usuario
+    return { message: "Usuario restaurado exitosamente" };
+  } catch (error) {
+    console.error("ERROR restoreUser controllers: ", error);
+    throw error;
+  }
+};

@@ -14,7 +14,7 @@ const transporter: Transporter = nodemailer.createTransport({
   },
 });
 
-type EmailAction = "USER_CREATED" | "PASSWORD_RECOVERY";
+type EmailAction = "USER_CREATED" | "PASSWORD_RECOVERY" | "USER_DELETED";
 
 const getEmailTemplate = (
   action: EmailAction,
