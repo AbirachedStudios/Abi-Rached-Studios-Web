@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../commons/Button";
 import Image from "next/image";
 import logo from "../../assets/img/ARS-VECTOR.png";
-import { navbarItems } from "../../data/navbarItems";
+import { navbarItems } from "../../data/homepage/navbarItems";
 import Languages from "./Languages";
 import { paths } from "@/data/paths";
 import { useLanguage } from "@/context/LanguageContext";
@@ -12,8 +12,8 @@ import styles from "../../assets/styles/navbar.module.css";
 
 export default function Navbar() {
   const { lang } = useLanguage();
-  const [isButtonVisible, setIsButtonVisible] = React.useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(true); // Empieza como `true` para que el navbar sea visible al cargar la página
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleButtonVisibility = () => {
@@ -26,7 +26,7 @@ export default function Navbar() {
     if (currentScrollY < lastScrollY) {
       // Scrolling up
       setIsScrollingUp(true);
-    } else {
+    } else if (currentScrollY > lastScrollY) {
       // Scrolling down
       setIsScrollingUp(false);
     }
@@ -35,21 +35,28 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    // Agregar el event listener de scroll
     window.addEventListener("scroll", handleScroll);
 
+    // Limpiar el event listener cuando se desmonte el componente
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
+
+  useEffect(() => {
+    // Forzar visibilidad inicial del navbar al cargar la página
+    setIsScrollingUp(true);
+  }, []); // Este efecto asegura que el navbar sea visible al cargar la página
 
   return (
     <div>
       <nav
         className={`bg-gray-900 bg-opacity-50 backdrop-blur ${
           styles.customNavbar
-        } w-full transition-transform duration-300 ease-in-out ${
+        } w-[100vw] md:w-full transition-transform duration-300 ease-in-out ${
           isScrollingUp ? "fixed translate-y-0" : "fixed -translate-y-full"
-        }`}
+        } z-50`}
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
           <a
@@ -102,12 +109,12 @@ export default function Navbar() {
             } w-full md:block md:w-auto bg-opacity-50`}
             id="navbar-default"
           >
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-900 rounded-lg bg-gray-90 bg-opacity-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700  ">
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-900 rounded-lg bg-gray-90 bg-opacity-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
               {navbarItems.map((item) => (
                 <li key={item.default}>
                   <a
                     href={item.url}
-                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold "
+                    className="block py-2 px-3 font-title-large text-title-large rounded transition duration-300 hover:bg-gray-900 md:hover:bg-transparent md:border-0 hover:text-primary-60 md:hover:text-primary-60 md:p-0 text-primary-0 md:text-gold"
                   >
                     {lang === "es" ? item.es : item.default}
                   </a>

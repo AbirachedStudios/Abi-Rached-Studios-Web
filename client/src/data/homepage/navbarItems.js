@@ -1,4 +1,4 @@
-import { paths } from "./paths";
+import { paths } from "../paths";
 
 export const navbarItems = [
   { default: "Home", es: "Inicio", url: `${paths.home}` },

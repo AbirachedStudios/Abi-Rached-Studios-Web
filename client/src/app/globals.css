@@ -59,6 +59,10 @@
   --neutral-90: #e5e2e1;
   --neutral-95: #f4f0ef;
   --gold: #d1a121;
+  --green-program: #3D9D9B;
+  --orange-design: #E67E22;
+  --violet-design: #8A2BE2;
+  --blue-marketing: #355C7D;
   /*TYPOGRAPHY*/
   /*--------------------------------------------------------------------------------*/
   --font-display-large: "Gadugi", sans-serif;
@@ -100,6 +104,11 @@
   --title-large-bold-font-size: 22px;
   --title-large-bold-line-height: 28px;
   --title-large-bold-letter-spacing: 0;
+  /*--------------------------------------------------------------------------------*/
+  --font-title-medium: "Gadugi", sans-serif;
+  --title-medium-font-size: 16px;
+  --title-medium-line-height: 22px;
+  --title-medium-letter-spacing: 0;
   /*--------------------------------------------------------------------------------*/
   --font-title-small: "Gadugi Medium", sans-serif;
   --title-small-font-size: 14px;
