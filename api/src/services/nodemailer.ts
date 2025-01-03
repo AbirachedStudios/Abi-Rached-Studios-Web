@@ -26,6 +26,8 @@ const getEmailTemplate = (
       return Template.userCreatedTemplate(name);
     case "PASSWORD_RECOVERY":
       return Template.passwordRecoveryTemplate(name, token!);
+      case "USER_DELETED":
+      return Template.userDeletedTemplate(name);
     default:
       return {
         subject: "Notificación del sistema",

@@ -40,5 +40,5 @@ export const Template = {
       <p>Si no solicitaste este cambio, ignora este correo.</p>
       <p>El enlace expirará en 1 hora.</p>
     `
-  })
+  }),
 };
