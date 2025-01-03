@@ -1,12 +1,14 @@
 import { Response, Request } from "express";
 import { User } from "../model/Users";
-import { IUser } from "../../utils/Interface";
+import { IUser } from "../../shared/Interface";
 import {
   createUser,
   updateUser,
   getAllUser,
   searchUserByName,
   getUserByIdController,
+  recoverPassword,
+  resetPassword,
 } from "../controllers/usersControllers";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
@@ -65,10 +67,7 @@ export const updateUserHandler = async (req: Request, res: Response) => {
 
 export const getUserHandler = async (req: Request, res: Response) => {
   try {
-    const { name } = req.query;
-    const results = name
-      ? await searchUserByName(name as string)
-      : await getAllUser();
+    const results = await getAllUser();
     res.status(200).json(results);
   } catch (error) {
     res.status(404).send(error);
@@ -105,5 +104,33 @@ export const deleteGame = async (req: Request, res: Response) => {
     res.status(400).json({
       error: "No se pudo borrar el usuario",
     });
+  }
+};
+
+export const recoverPasswordHandler = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: "El email es requerido" });
+    }
+
+    const result = await recoverPassword(email);
+    res.status(200).json(result);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export const resetPasswordHandler = async (req: Request, res: Response) => {
+  try {
+    const { token, newPassword } = req.body;
+    if (!token || !newPassword) {
+      return res.status(400).json({ error: "Token y nueva contraseña son requeridos" });
+    }
+
+    const result = await resetPassword(token, newPassword);
+    res.status(200).json(result);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
   }
 };

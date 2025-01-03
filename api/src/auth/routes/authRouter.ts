@@ -2,13 +2,14 @@ import { Router } from "express";
 import { refreshToken } from "../services/jwt";
 import { validarJWT } from "../../middlewares/validar-jwt";
 import { loginUser } from "../services/authService";
-import { requiresAuth } from "express-openid-connect";
 import {
   postUserHandler,
   updateUserHandler,
   getUserHandler,
   getUserByIdHandler,
   deleteGame,
+  recoverPasswordHandler,
+  resetPasswordHandler,
 } from "../handlers/usersHandlers";
 
 const authRouter = Router();
@@ -31,6 +32,12 @@ authRouter.get("/usersById/:id", validarJWT, getUserByIdHandler);
 authRouter.delete("/usersById/:id", validarJWT, deleteGame);
 
 authRouter.post("/login", loginUser);
-authRouter.get("/renew", validarJWT, refreshToken);
+authRouter.get("/renew", refreshToken);
+
+// Ruta para solicitar recuperación de contraseña
+authRouter.post("/recover-password", recoverPasswordHandler);
+
+// Ruta para restablecer la contraseña
+authRouter.post("/reset-password", resetPasswordHandler);
 
 export default authRouter;

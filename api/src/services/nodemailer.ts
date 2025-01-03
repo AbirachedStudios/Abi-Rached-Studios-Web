@@ -14,15 +14,18 @@ const transporter: Transporter = nodemailer.createTransport({
   },
 });
 
-type EmailAction = "USER_CREATED";
+type EmailAction = "USER_CREATED" | "PASSWORD_RECOVERY";
 
 const getEmailTemplate = (
   action: EmailAction,
-  name: string
+  name: string,
+  token?: string
 ): { subject: string; html: string } => {
   switch (action) {
     case "USER_CREATED":
       return Template.userCreatedTemplate(name);
+    case "PASSWORD_RECOVERY":
+      return Template.passwordRecoveryTemplate(name, token!);
     default:
       return {
         subject: "Notificación del sistema",
@@ -36,9 +39,10 @@ const getEmailTemplate = (
 export const sendEmail = async (
   to: string,
   action: EmailAction,
-  name: string
+  name: string,
+  token?: string
 ) => {
-  const { subject, html } = getEmailTemplate(action, name);
+  const { subject, html } = getEmailTemplate(action, name, token);
   try {
     const info = await transporter.sendMail({
       from: `"Soporte" <${process.env.SMTP_USER}>`,

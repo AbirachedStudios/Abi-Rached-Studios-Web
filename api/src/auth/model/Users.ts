@@ -1,6 +1,6 @@
 import { Model, DataTypes, Optional } from "sequelize";
 import { sequelize } from "../../db";
-import { IUser } from "../../utils/Interface";
+import { IUser } from "../../shared/Interface";
 import bcrypt from "bcrypt";
 import { UUID } from "crypto";
 
@@ -14,6 +14,7 @@ export class User
   public id!: UUID; // `!` significa que la propiedad está garantizada después de la creación
   public name!: string;
   public email!: string;
+  public role!: "admin" | "user";
   public password!: string; // Debería estar hasheada
 
   // Timestamps
@@ -43,6 +44,11 @@ User.init(
       validate: {
         isEmail: true, // Agregar validación para asegurar que el email sea correcto
       },
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "user",
     },
     password: {
       type: DataTypes.STRING,

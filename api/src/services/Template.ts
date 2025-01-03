@@ -1,6 +1,3 @@
-
-
-
 export const Template = {
   userCreatedTemplate: (name: string): { subject: string; html: string } => ({
     subject: "Bienvenido a nuestra plataforma",
@@ -33,4 +30,15 @@ export const Template = {
       </div>
     `,
   }),
+
+  passwordRecoveryTemplate: (name: string, token: string) => ({
+    subject: "Recuperación de contraseña",
+    html: `
+      <h1>Hola ${name}</h1>
+      <p>Has solicitado recuperar tu contraseña. Haz click en el siguiente enlace para restablecerla:</p>
+      <a href="${process.env.FRONTEND_URL}/reset-password/${token}">Restablecer contraseña</a>
+      <p>Si no solicitaste este cambio, ignora este correo.</p>
+      <p>El enlace expirará en 1 hora.</p>
+    `
+  })
 };
