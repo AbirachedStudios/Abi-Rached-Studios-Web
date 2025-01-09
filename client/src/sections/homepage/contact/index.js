@@ -1,12 +1,15 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import Link from "next/link";
 import { paths } from "@/data/paths";
 import { Cta } from "@/components/commons/Cta";
 import { contactItems, selectOptions } from "@/data/homepage/contactItems";
 import { useLanguage } from "@/context/LanguageContext";
+import  ConfirmationModal  from "@/components/commons/ConfirmationModal";
 
 export default function Contact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { lang } = useLanguage();
   const {
     register,
@@ -16,6 +19,7 @@ export default function Contact() {
 
   const onSubmit = (data) => {
     console.log(data);
+    setIsModalOpen(true);
   };
 
   return (
@@ -216,6 +220,13 @@ export default function Contact() {
           </Cta>
         </div>
       </form>
+      {isModalOpen && (
+        <ConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          title={lang === "es" ? "Tu consulta fué enviada" : "Your query has been sent"}
+          message={lang === "es" ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore." : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore."}
+        />
+      )}
     </div>
   );
 }
