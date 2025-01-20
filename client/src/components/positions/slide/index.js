@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
+import Link from "next/link";
+import { paths } from "@/data/paths";
 
 // Componente de tarjeta individual
 const PositionCard = ({
@@ -39,15 +41,11 @@ const PositionCard = ({
         </div>
         <h3 className={`text-${colorClass} text-headline-small`}>{title}</h3>
         <p className="text-sm text-gray-300 mb-4">{info}</p>
-        <button
-          className="px-4 py-2 bg-none text-title-large text-gold border-[1px] md:w-full border-gold rounded-md hover:bg-primary-60 hover:text-primary-0 hover:border-primary-60 transition"
-          onClick={(e) => {
-            e.preventDefault();
-            alert("¡Aplicación en desarrollo!");
-          }}
-        >
+        <Link href={`${paths.positions}/${url}`}
+          className="px-4 py-2 bg-none text-title-large text-gold border-[1px] md:w-full border-gold rounded-md hover:bg-primary-60 hover:text-primary-0 hover:border-primary-60 transition" >
           {apply}
-        </button>
+        </Link>
+          
       </div>
     ) : (
       // Contenido estándar de la tarjeta

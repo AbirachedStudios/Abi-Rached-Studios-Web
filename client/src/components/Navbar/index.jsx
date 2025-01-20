@@ -58,7 +58,7 @@ export default function Navbar() {
           isScrollingUp ? "fixed translate-y-0" : "fixed -translate-y-full"
         } z-50`}
       >
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
+        <div className=" flex flex-wrap items-center justify-between mx-auto p-6">
           <a
             href={paths.home}
             className="flex items-center space-x-3 rtl:space-x-reverse"

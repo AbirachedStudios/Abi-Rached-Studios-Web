@@ -7,7 +7,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "graphics-icon.png",
-    url: "#",
+    url: "graphic-designer",
     colorClass: "orange-design",
     info: {
       default:
@@ -26,7 +26,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "game-design.png",
-    url: "#",
+    url: "game-designer",
     colorClass: "violet-design",
     info: {
       default:
@@ -45,7 +45,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "dev-icon.png",
-    url: "#",
+    url: "game-developer",
     colorClass: "green-program",
     info: {
       default:
@@ -64,7 +64,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "marketing-icon.png",
-    url: "#",
+    url: "marketing-specialist",
     colorClass: "blue-marketing",
     info: {
       default:
@@ -83,7 +83,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "testing-icon.png",
-    url: "#",
+    url: "qa-tester",
     colorClass: "green-program",
     info: {
       default:
@@ -102,7 +102,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "orange-icon.png",
-    url: "#",
+    url: "3d-modeler",
     colorClass: "orange-design",
     info: {
       default:
@@ -121,7 +121,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "sound-icon.png",
-    url: "#",
+    url: "sound-producer",
     colorClass: "violet-design",
     info: {
       default:
@@ -140,7 +140,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "cinematic-icon.png",
-    url: "#",
+    url: "cinematic-designer",
     colorClass: "blue-marketing",
     info: {
       default:
@@ -159,7 +159,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "diamond.png",
-    url: "#",
+    url: "open-position-name",
     colorClass: "violet-design",
     info: {
       default:
@@ -178,7 +178,7 @@ export const positionsItems = [
       es: "La Leyenda del Kitsune",
     },
     icon: "write-icon.png",
-    url: "#",
+    url: "writter",
     colorClass: "orange-design",
     info: {
       default:
