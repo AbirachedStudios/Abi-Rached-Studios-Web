@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Breadcrumb = ({ paths }) => {
   return (
-    <nav aria-label="breadcrumb" className="text-sm text-gray-400">
+    <nav aria-label="breadcrumb" className="text-sm text-gray-400 hidden md:block">
       <ul className="flex items-center gap-2">
         {paths.map((path, index) => (
           <li key={index} className="flex items-center">
