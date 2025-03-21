@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { talentItems } from "@/data/homepage/talentsItems";
 import { useLanguage } from "@/context/LanguageContext";
+import { paths } from "@/data/paths";
 
 export default function Talents() {
   const { lang } = useLanguage();
@@ -20,7 +21,7 @@ export default function Talents() {
         </h2>
         <p></p>
         <Link
-          href="#"
+          href={paths.team}
           className="mt-6 px-12 py-4 w-full md:w-auto md:px-24 md:py-4 text-title-large md:text-headline-small border-2 border-gold text-gold hover:text-primary-60 hover:border-primary-60 transition-colors duration-300 inline-block relative left-0 md:left-10"
           style={{ borderRadius: "5px" }}
         >
