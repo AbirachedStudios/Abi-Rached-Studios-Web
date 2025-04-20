@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { tabs } from "@/data/team/tabs";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function TeamTabs() {
+export default function TeamTabs({ activeTab, setActiveTab }) {
   const { lang } = useLanguage();
-  const [activeTab, setActiveTab] = useState(tabs[0].id); 
 
   return (
     <div className="flex justify-start gap-4 flex-wrap px-6 mb-12">

@@ -1,6 +1,16 @@
 export const tabs = [
   {
+    id: 0,
+    tag: "all",
+    name: {
+      default: "All",
+      es: "Todos",
+    },
+    colorClass: "primary-60", 
+  },
+  {
     id: 1,
+    tag: "dev",
     name: {
       default: "Develop",
       es: "Desarrollo",
@@ -9,6 +19,7 @@ export const tabs = [
   },
   {
     id: 2,
+    tag: "marketing",
     name: {
       default: "Marketing",
       es: "Marketing",
@@ -17,6 +28,7 @@ export const tabs = [
   },
   {
     id: 3,
+    tag: "game design",
     name: {
       default: "Game Design",
       es: "Diseño de Juegos",
@@ -25,6 +37,7 @@ export const tabs = [
   },
   {
     id: 4,
+    tag: "design",
     name: {
       default: "Design",
       es: "Diseño",

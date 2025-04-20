@@ -6,7 +6,7 @@ export const teamMember = [
         default: "Product Owner",
         es: "Product Owner",
       },
-      tags: ["product owner", "dev", "marketing", "game design", "design"],
+      tags: ["dev", "game design"],
       url: "#",
       info: {
         default:
@@ -22,7 +22,7 @@ export const teamMember = [
         default: "Game Designer",
         es: "Game Designer",
       },
-      tags: ["game design", "creative", "art"],
+      tags: ["game design"],
       url: "game-designer",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
@@ -37,7 +37,7 @@ export const teamMember = [
         default: "Game Developer",
         es: "Desarrollador/a de Juegos",
       },
-      tags: ["dev", "programming", "game design"],
+      tags: ["dev"],
       url: "game-developer",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
@@ -52,7 +52,7 @@ export const teamMember = [
         default: "Marketing Specialist",
         es: "Especialista en Marketing",
       },
-      tags: ["marketing", "SEO", "advertising"],
+      tags: ["marketing"],
       url: "marketing-specialist",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
@@ -67,7 +67,7 @@ export const teamMember = [
         default: "QA Tester",
         es: "Tester QA",
       },
-      tags: ["QA", "testing", "debugging"],
+      tags: ["dev"],
       url: "qa-tester",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
@@ -82,13 +82,13 @@ export const teamMember = [
         default: "3D Modeler",
         es: "Modelador/a 3D",
       },
-      tags: ["3D", "art", "design"],
+      tags: ["design"],
       url: "3d-modeler",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
         es: "Español Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra."
       },
-      colorClass: "violet-design",
+      colorClass: "orange-design",
     },
     {
       id: 7,
@@ -97,13 +97,13 @@ export const teamMember = [
         default: "Sound Producer",
         es: "Productor de Sonido",
       },
-      tags: ["audio", "sound design", "music"],
+      tags: ["design"],
       url: "sound-producer",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
         es: "Español Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra."
       },
-      colorClass: "violet-design",
+      colorClass: "orange-design",
     },
     {
       id: 8,
@@ -112,13 +112,13 @@ export const teamMember = [
         default: "Cinematic Designer",
         es: "Diseñador de Cinemáticas",
       },
-      tags: ["cinematic", "video", "editing"],
+      tags: ["design"],
       url: "cinematic-designer",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
         es: "Español Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra."
       },
-      colorClass: "violet-design",
+      colorClass: "orange-design",
     },
     {
       id: 9,
@@ -127,7 +127,7 @@ export const teamMember = [
         default: "Open Position Name",
         es: "Nombre de la Posición",
       },
-      tags: ["flexible", "adaptability"],
+      tags: ["dev"],
       url: "open-position-name",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
@@ -142,12 +142,12 @@ export const teamMember = [
         default: "Writer",
         es: "Guionísta",
       },
-      tags: ["writing", "storytelling", "narrative"],
+      tags: ["marketing"],
       url: "writer",
       info: {
         default: "English Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra.",
         es: "Español Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ipsum non diam dictum pharetra."
       },
-      colorClass: "orange-design",
+      colorClass: "blue-marketing",
     }
 ];
