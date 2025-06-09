@@ -45,9 +45,8 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   useEffect(() => {
-    // Forzar visibilidad inicial del navbar al cargar la página
     setIsScrollingUp(true);
-  }, []); // Este efecto asegura que el navbar sea visible al cargar la página
+  }, []); 
 
   return (
     <div>

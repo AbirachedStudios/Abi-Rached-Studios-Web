@@ -3,5 +3,6 @@ export const paths = {
     news: "/news",
     terms: "/terms",
     positions: "/positions",
-    team: "/team"
+    team: "/team",
+    thelegendofthekitsune: "/thelegendofthekitsune",
   };
