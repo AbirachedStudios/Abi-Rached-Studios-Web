@@ -17,6 +17,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+/**
+ * Maneja la creación de nuevos usuarios
+ * @param req - Request con los datos del usuario en el body
+ * @param res - Response para enviar la respuesta
+ */
 export const postUserHandler = async (req: Request, res: Response) => {
   const { name, email, password } = req.body as IUser;
   try {
@@ -46,6 +51,11 @@ export const postUserHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja la actualización de usuarios
+ * @param req - Request con ID en params y datos a actualizar en body
+ * @param res - Response para enviar la respuesta
+ */
 export const updateUserHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
   const updatedData = req.body; // Puede incluir la contraseña sin necesidad de hashearla manualmente
@@ -67,6 +77,11 @@ export const updateUserHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja la obtención de todos los usuarios
+ * @param req - Request
+ * @param res - Response para enviar la lista de usuarios
+ */
 export const getUserHandler = async (req: Request, res: Response) => {
   try {
     const results = await getAllUser();
@@ -76,6 +91,11 @@ export const getUserHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja la obtención de un usuario por ID
+ * @param req - Request con ID en params
+ * @param res - Response para enviar el usuario
+ */
 export const getUserByIdHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -93,6 +113,11 @@ export const getUserByIdHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja el borrado suave de usuarios
+ * @param req - Request con ID en params
+ * @param res - Response para enviar confirmación
+ */
 export const deleteUserHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -105,6 +130,11 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja la solicitud de recuperación de contraseña
+ * @param req - Request con email en body
+ * @param res - Response para enviar confirmación
+ */
 export const recoverPasswordHandler = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
@@ -119,6 +149,11 @@ export const recoverPasswordHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja el restablecimiento de contraseña
+ * @param req - Request con token y nueva contraseña en body
+ * @param res - Response para enviar confirmación
+ */
 export const resetPasswordHandler = async (req: Request, res: Response) => {
   try {
     const { token, newPassword } = req.body;
@@ -133,6 +168,11 @@ export const resetPasswordHandler = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Maneja la restauración de usuarios desactivados
+ * @param req - Request con ID en params
+ * @param res - Response para enviar confirmación
+ */
 export const restoreUserHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

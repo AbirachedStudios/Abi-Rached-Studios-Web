@@ -4,6 +4,12 @@ import { User } from "../model/Users";
 import { sendEmail } from "../../services/nodemailer";
 import jwt from 'jsonwebtoken';
 
+/**
+ * Crea un nuevo usuario en el sistema
+ * @param user - Datos del usuario a crear (nombre, email, contraseña)
+ * @returns El usuario creado
+ * @throws Error si los datos no cumplen con las validaciones
+ */
 export const createUser = async (user: IUser) => {
   try {
     const { name, email, password } = user;
@@ -31,6 +37,13 @@ export const createUser = async (user: IUser) => {
   }
 };
 
+/**
+ * Actualiza los datos de un usuario existente
+ * @param id - ID del usuario a actualizar
+ * @param updatedData - Datos parciales del usuario a actualizar
+ * @returns Usuario actualizado o null si no se encuentra
+ * @throws Error si hay problemas con la actualización
+ */
 export const updateUser = async ({
   id,
   updatedData,
@@ -60,6 +73,13 @@ export const updateUser = async ({
   }
 };
 
+/**
+ * Obtiene todos los usuarios con paginación y filtros
+ * @param page - Número de página actual (default: 1)
+ * @param limit - Cantidad de usuarios por página (default: 10)
+ * @param filters - Filtros opcionales (rol, email, nombre)
+ * @returns Objeto con usuarios y metadata de paginación
+ */
 export const getAllUser = async (page: number = 1, limit: number = 10, filters?: {
   role?: string;
   email?: string;
@@ -100,6 +120,12 @@ export const getAllUser = async (page: number = 1, limit: number = 10, filters?:
   }
 };
 
+/**
+ * Busca usuarios por nombre
+ * @param name - Nombre del usuario a buscar
+ * @returns Array de usuarios que coinciden con el nombre
+ * @throws Error si hay problemas en la búsqueda
+ */
 export const searchUserByName = async (name: string) => {
   try {
     const infoDB = await User.findAll({
@@ -117,6 +143,11 @@ export const searchUserByName = async (name: string) => {
   }
 };
 
+/**
+ * Obtiene un usuario por su ID
+ * @param id - ID del usuario a buscar
+ * @returns Usuario encontrado o mensaje de error
+ */
 export const getUserByIdController = async (id: string) => {
   try {
     let user = await User.findOne({
@@ -134,6 +165,12 @@ export const getUserByIdController = async (id: string) => {
   }
 };
 
+/**
+ * Inicia el proceso de recuperación de contraseña
+ * @param email - Email del usuario que solicita recuperar su contraseña
+ * @returns Mensaje de confirmación
+ * @throws Error si el usuario no existe o hay problemas en el proceso
+ */
 export const recoverPassword = async (email: string) => {
   try {
     const user = await User.findOne({ where: { email } });
@@ -163,6 +200,13 @@ export const recoverPassword = async (email: string) => {
   }
 };
 
+/**
+ * Restablece la contraseña de un usuario
+ * @param token - Token de recuperación válido
+ * @param newPassword - Nueva contraseña
+ * @returns Mensaje de confirmación
+ * @throws Error si el token es inválido o ha expirado
+ */
 export const resetPassword = async (token: string, newPassword: string) => {
   try {
     // Verificar token
@@ -185,6 +229,12 @@ export const resetPassword = async (token: string, newPassword: string) => {
   }
 };
 
+/**
+ * Realiza un borrado suave de un usuario
+ * @param id - ID del usuario a desactivar
+ * @returns Mensaje de confirmación
+ * @throws Error si el usuario no existe o hay problemas en el proceso
+ */
 export const softDeleteUser = async (id: string) => {
   try {
     const user = await User.findByPk(id);
@@ -205,6 +255,12 @@ export const softDeleteUser = async (id: string) => {
   }
 };
 
+/**
+ * Restaura un usuario previamente desactivado
+ * @param id - ID del usuario a restaurar
+ * @returns Mensaje de confirmación
+ * @throws Error si el usuario no existe o hay problemas en el proceso
+ */
 export const restoreUser = async (id: string) => {
   try {
     const user = await User.findByPk(id, { paranoid: false }); // Incluye registros "eliminados"

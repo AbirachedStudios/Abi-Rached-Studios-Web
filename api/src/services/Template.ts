@@ -1,4 +1,9 @@
 export const Template = {
+  /**
+   * Genera la plantilla de correo para usuarios recién creados
+   * @param name - Nombre del usuario
+   * @returns Objeto con el asunto y contenido HTML del correo
+   */
   userCreatedTemplate: (name: string): { subject: string; html: string } => ({
     subject: "Bienvenido a nuestra plataforma",
     html: `
@@ -17,6 +22,11 @@ export const Template = {
         `,
   }),
 
+  /**
+   * Genera la plantilla de correo para usuarios eliminados
+   * @param name - Nombre del usuario
+   * @returns Objeto con el asunto y contenido HTML del correo
+   */
   userDeletedTemplate: (name: string): { subject: string; html: string } => ({
     subject: "Tu cuenta ha sido eliminada",
     html: `
@@ -31,6 +41,12 @@ export const Template = {
     `,
   }),
 
+  /**
+   * Genera la plantilla de correo para recuperación de contraseña
+   * @param name - Nombre del usuario
+   * @param token - Token de recuperación
+   * @returns Objeto con el asunto y contenido HTML del correo
+   */
   passwordRecoveryTemplate: (name: string, token: string) => ({
     subject: "Recuperación de contraseña",
     html: `

@@ -1,4 +1,4 @@
-import { Model, DataTypes, Optional } from "sequelize";
+import { Model, DataTypes, Optional, ModelStatic } from "sequelize";
 import { sequelize } from "../../db";
 import { IUser } from "../../shared/Interface";
 import bcrypt from "bcrypt";

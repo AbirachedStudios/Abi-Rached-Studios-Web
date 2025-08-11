@@ -16,6 +16,13 @@ const transporter: Transporter = nodemailer.createTransport({
 
 type EmailAction = "USER_CREATED" | "PASSWORD_RECOVERY" | "USER_DELETED";
 
+/**
+ * Obtiene la plantilla de correo electrónico según el tipo de acción
+ * @param action - Tipo de acción que determina la plantilla ('USER_CREATED', 'PASSWORD_RECOVERY', 'USER_DELETED')
+ * @param name - Nombre del usuario destinatario
+ * @param token - Token opcional para recuperación de contraseña
+ * @returns Objeto con el asunto y contenido HTML del correo
+ */
 const getEmailTemplate = (
   action: EmailAction,
   name: string,
@@ -36,8 +43,13 @@ const getEmailTemplate = (
   }
 };
 
-// export const sendEmail = async (to: string, action: EmailAction, name: string, extraData?: any) => {
-//   const { subject, html } = getEmailTemplate(action, name, extraData);
+/**
+ * Envía un correo electrónico utilizando la configuración SMTP establecida
+ * @param to - Dirección de correo electrónico del destinatario
+ * @param action - Tipo de acción que determina la plantilla
+ * @param name - Nombre del usuario destinatario
+ * @param token - Token opcional para recuperación de contraseña
+ */
 export const sendEmail = async (
   to: string,
   action: EmailAction,
