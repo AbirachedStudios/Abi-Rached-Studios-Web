@@ -8,6 +8,9 @@ import Contact from "@/sections/Contact/Contact";
 import Apply from "@/components/Forms/ApplyForm";
 import Login from "@/components/Forms/LoginForm";
 import Register from "@/components/Forms/RegisterForm";
+import Dashboard from "@/components/Dashboard/Dashboard";
+import News from "@/sections/News/News";
+
 
 export default function Home() {
   return (
@@ -20,6 +23,8 @@ export default function Home() {
       <Contact></Contact>
       <Login></Login>
       <Register></Register>
+      <Dashboard></Dashboard> 
+      <News></News>
     </div>
   );
 }
