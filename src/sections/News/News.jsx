@@ -9,7 +9,6 @@ const News = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                // Cambia la URL por tu endpoint real
                 const response = await axios.get('http://localhost:3001/api/news');
                 setNews(response.data);
             } catch (err) {

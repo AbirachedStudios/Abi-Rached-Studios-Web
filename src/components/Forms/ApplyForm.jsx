@@ -65,7 +65,7 @@ const Apply = ({ switchToLogin }) => {
     const fileButtonClass = "cursor-pointer w-full flex items-center justify-center py-2 px-4 border border-purpura rounded-lg shadow-sm text-sm font-medium text-white bg-gray-700 hover:bg-gray-600 transition duration-150 ease-in-out";
 
     return (
-        <div className="w-full max-w-lg bg-gray-900 p-8 rounded-xl shadow-2xl transition-all duration-300 border border-gray-700">
+        <div className="w-full max-w-lg bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-700 animate-fade-in-up">
             
             {/* Título: Postulate acá */}
             <h1 className="text-4xl font-extrabold text-oro text-center mb-2 flex items-center justify-center">

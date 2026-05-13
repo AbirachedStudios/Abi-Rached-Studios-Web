@@ -6,7 +6,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
 
-const Navbar = () => {
+const Navbar = ({onHomeClick, onRegisterClick, onNewsClick, onTalentsClick, onContactClick}) => {
   const [mobile, setMobile] = useState(false);
 
 
@@ -23,10 +23,14 @@ const Navbar = () => {
       {/* Menu para escritorio*/}
       <div className='sm:flex hidden flex-row items-center justify-between w-[80%]'>
         <div className='w-2/3 flex flex-row items-center justify-evenly text-[#D1A121]'>
-          <a href="">Inicio</a><a href="">Novedades</a><a href="">Juegos</a><a href="">Soporte</a>
+          <button onClick={onHomeClick} className="hover:text-white">Inicio</button>
+          <a href="">Juegos</a>
+          <button onClick={onNewsClick} className="hover:text-white transition-colors">Novedades</button>
+          <button onClick={onTalentsClick} className="hover:text-white transition-colors">Talentos</button>
+          <button onClick={onContactClick} className="hover:text-white transition-colors">Soporte</button>
         </div>
         <div className='w-1/3 flex flex-row'>
-          <button className='bg-[#D1A121] font-medium uppercase w-[60%] p-1 rounded-md'>Inscribite en la beta</button>
+          <button onClick={onRegisterClick} className='bg-[#D1A121] font-medium uppercase w-[60%] p-1 rounded-md'>Inscribite en la beta</button>
           <div className='flex flex-row items-center justify-center w-[40%] text-white'>
             <span className='m-2'>ES</span>
             <span className='m-2'>EN</span>

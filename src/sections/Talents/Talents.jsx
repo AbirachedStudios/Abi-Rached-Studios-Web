@@ -41,6 +41,19 @@ const Talents = () => {
 
   return (
     <div className='w-full min-h-screen bg-black flex flex-col items-center justify-center text-white p-8 text-center'>
+      
+      {/* --- LÍNEAS DE COLORES IZQUIERDAS --- */}
+      <div className="absolute left-0 bottom-20 flex flex-col gap-6 w-full max-w-[500px]">
+        {/* Barra Oro/Amarillo */}
+        <div className="h-7 w-[60%] bg-gradient-to-r from-[#D1A121] to-transparent rounded-r-full animate-slide-right delay-300 opacity-80" />
+        {/* Barra Naranja */}
+        <div className="h-7 w-[80%] bg-gradient-to-r from-orange-500 to-transparent rounded-r-full animate-slide-right delay-200 opacity-80" />
+        {/* Barra Cian */}
+        <div className="h-7 w-[100%] bg-gradient-to-r from-cyan-500 to-transparent rounded-r-full animate-slide-right delay-100 opacity-80" />
+        {/* Barra Púrpura */}
+        <div className="h-7 w-[120%] bg-gradient-to-r from-purple-600 to-transparent rounded-r-full animate-slide-right opacity-80" />
+      </div>
+
       <h4 className='text-4xl'>
         Conoce a nuestros <span className='text-purple-500'>talentos</span> detrás de cada <br/>uno de nuestros proyectos
       </h4>
@@ -88,7 +101,7 @@ const Talents = () => {
                 {/* Avatar/Imagen */}
                 <div className='w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg group-hover:scale-110 transition-transform'>
                   {miembro.foto ? (
-                    <img src={miembro.foto} alt={miembro.name} className="w-full h-full rounded-full object-cover" />
+                    <img src={miembro.imageUrl} alt={miembro.name} className="w-full h-full rounded-full object-cover" />
                   ) : (
                     miembro.name?.[0] || '?'
                   )}
@@ -113,6 +126,19 @@ const Talents = () => {
       >
         Ver todo el equipo
       </button>
+
+{/* --- LÍNEAS DE COLORES DERECHAS --- */}
+      <div className="absolute right-0 top-20 flex flex-col items-end gap-6 w-full max-w-[500px]">
+        {/* Barra Púrpura Invertida */}
+        <div className="h-7 w-[120%] bg-gradient-to-l from-purple-600 to-transparent rounded-l-full animate-slide-left opacity-80" />
+        {/* Barra Cian Invertida */}
+        <div className="h-7 w-[100%] bg-gradient-to-l from-cyan-500 to-transparent rounded-l-full animate-slide-left delay-300 opacity-80" />
+        {/* Barra Naranja Invertida */}
+        <div className="h-7 w-[80%] bg-gradient-to-l from-orange-500 to-transparent rounded-l-full animate-slide-left delay-150 opacity-80" />
+        {/* Barra Oro/Amarillo  */}
+        <div className="h-7 w-[60%] bg-gradient-to-l from-[#D1A121] to-transparent rounded-l-full animate-slide-left delay-200 opacity-80" />
+      </div>
+
     </div>
   );
 }

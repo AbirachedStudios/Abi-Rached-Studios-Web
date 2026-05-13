@@ -4,7 +4,7 @@ import logo from "../../../public/assets/images/logo-square-color.png";
 import smoke from '../../../public/assets/images/smoke-background-bento.jpg'
 import team from '../../../public/assets/images/team.jpg'
 
-const Bento = () => {
+const Bento = ({ onApplyClick }) => {
   return (
     <div className="w-full h-screen bg-black px-12"       style={{
         backgroundImage: `url(${smoke.src})`,
@@ -12,7 +12,7 @@ const Bento = () => {
       <div className="w-full h-1/2 grid grid-cols-3 gap-4 py-2 z-10">
         <div className="bg-[#ffffff44] w-full h-full flex flex-col items-center justify-center text-center p-4 rounded-md">
           <span className="text-[#D1A121] text-2xl">
-            "Jugamos, creamos, conectamos"
+            &quot;Jugamos, creamos, conectamos&quot;
           </span>
           <p className="text-white mt-8 w-2/3">
             ¡Es nuestra filosofía y nuestro compromiso! Vivimos la pasión por
@@ -33,8 +33,8 @@ const Bento = () => {
       <div className="w-full h-1/2 grid grid-cols-2 gap-4 py-2 z-10">
         <div className="bg-[#ffffff44] w-full h-full rounded-md flex flex-col items-center justify-around text-center p-8 text-white">
           <span className="uppercase text-[#D1A121] text-xl">¡Unete a nuestro equipo!</span>
-          <p className="text-white">Sumate en nuestra aventura y explroa tu potencial</p>
-          <button className="bg-[#D1A121] p-2 uppercase text-black rounded-md font-medium w-1/2">ver posiciones</button>
+          <p className="text-white">Sumate en nuestra aventura y explora tu potencial</p>
+          <button onClick={onApplyClick} className="bg-[#D1A121] p-2 uppercase text-black rounded-md font-medium w-1/2">Aplica aquí</button>
         </div>
         <div className="bg-[#ffffff44] w-full h-full rounded-md overflow-hidden">
           <Image src={team} alt='team'/>

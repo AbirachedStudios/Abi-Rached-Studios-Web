@@ -213,33 +213,22 @@ const Register = ({ switchToLogin, switchToContact }) => {
                 <div>
                     <button
                         type="submit"
-                        className={`w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-lg shadow-lg text-sm font-medium text-gray-900 transition duration-300 ease-in-out 
-                            ${isLoading 
-                            ? 'bg-oro-light cursor-not-allowed' 
-                            : 'bg-oro hover:bg-oro-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-oro hover:scale-[1.01] focus:ring-offset-gray-900'
-                            }`}
                         disabled={isLoading}
+                        className={`w-full flex justify-center items-center py-2 px-4 rounded-lg shadow-lg text-sm font-medium text-black transition-all duration-300 
+                            ${isLoading ? 'bg-gray-600' : 'bg-[#D1A121] hover:bg-[#b0891c] hover:scale-[1.02]'}`}
                     >
-                        {isLoading ? (
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                        ) : (
-                            <Zap className="h-5 w-5 mr-2" aria-hidden="true" />
-                        )}
-                        {isLoading ? 'Registrando...' : 'Registrar Cuenta'}
+                        {isLoading ? 'Registrando...' : <><Zap className="h-4 w-4 mr-2" /> Registrar Cuenta</>}
                     </button>
                 </div>
 
-                {/* Enlace de inicio de sesión y contacto */}
-                <div className="mt-4 pt-4 border-t border-gray-700 space-y-2">
+                {/* 2. CORRECCIÓN DE ENLACES INFERIORES */}
+                <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
                     <p className='text-gray-400 text-center text-sm'>
                         ¿Ya tienes una cuenta?{' '}
                         <button 
                             type="button" 
                             onClick={switchToLogin} 
-                            className="font-medium text-oro hover:text-oro-light underline transition-colors"
+                            className="font-medium text-[#D1A121] hover:underline transition-colors"
                         >
                             Inicia sesión aquí
                         </button>
@@ -249,7 +238,7 @@ const Register = ({ switchToLogin, switchToContact }) => {
                         <button 
                             type="button" 
                             onClick={switchToContact} 
-                            className="font-medium text-purpura hover:text-oro-light underline transition-colors"
+                            className="font-medium text-purple-400 hover:text-[#D1A121] underline transition-colors"
                         >
                             Contáctanos
                         </button>

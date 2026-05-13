@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react'; 
 import axios from 'axios';
-
+import { useRouter } from 'next/navigation'; // Agregamos el router de Next.js
 
 const API_URL = 'http://localhost:3001/api/auth/login'; 
 
-const Login = ({ switchToRegister, switchToContact, onLoginSuccess }) => {
+const Login = ({ switchToRegister, switchToContact }) => {
+    const router = useRouter(); // Inicializamos el router
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -19,45 +20,54 @@ const Login = ({ switchToRegister, switchToContact, onLoginSuccess }) => {
         e.preventDefault();
         setError('');
         setSuccess('');
+
         if (!passwordRegex.test(password)) {
             setError('La contraseña debe tener al menos una mayúscula, una minúscula, un número y un símbolo, y mínimo 8 caracteres.');
             return;
         }
+
         setIsLoading(true);
 
-      try {
-        const response = await axios.post(API_URL, {
-            email: email,
-            password: password,
-        });
+        try {
+            const response = await axios.post(API_URL, {
+                email: email,
+                password: password,
+            });
 
-        const result = response.data;
-        setSuccess('¡Inicio de sesión exitoso!');
-        setEmail('');
-        setPassword('');
-        // Manejar el resultado exitoso aquí (por ejemplo, redirigir al usuario)
-        console.log('Inicio de sesión exitoso:', result);
+            const result = response.data; // Aquí recibimos { token, user }
+            
+            setSuccess('¡Inicio de sesión exitoso!');
+            
+            // --- NUEVA LÓGICA DE PERSISTENCIA ---
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('user', JSON.stringify(result.user));
 
-        //onLoginSuccess(result.token, result.user); // Notificar al componente padre sobre el inicio de sesión exitoso
+            // Limpiamos campos
+            setEmail('');
+            setPassword('');
 
-      } catch (error) {
-        if (error.response) {
-            // El servidor respondió con un estado fuera del rango 2xx
-            setError(error.response.data.message || 'Error de inicio de sesión. Por favor, verifica tus credenciales.');
-        } else if (error.request) {
-            // La solicitud fue hecha pero no se recibió respuesta
-            console.error('Error de solicitud:', error.request);
-            setError('No se recibió respuesta del servidor. Por favor, inténtalo de nuevo más tarde.');
-        } else {
-            // Algo sucedió al configurar la solicitud
-            console.error('Error:', error.message);
-            setError('Ocurrió un error al iniciar sesión. Por favor, inténtalo de nuevo.');
+            // --- REDIRECCIÓN SEGÚN ROL ---
+            // Usamos un pequeño delay para que el usuario vea el mensaje de éxito
+            setTimeout(() => {
+                if (result.user.role === 'ADMIN') {
+                    router.push('/admin'); // Va a la carpeta src/app/admin/page.js
+                } else {
+                    router.push('/'); // Vuelve a la landing
+                }
+            }, 1500);
+
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.data.message || 'Error de inicio de sesión.');
+            } else if (error.request) {
+                setError('No se recibió respuesta del servidor.');
+            } else {
+                setError('Ocurrió un error inesperado.');
+            }
+        } finally {
+            setIsLoading(false);
         }
-      } finally {
-        setIsLoading(false);
-      }
     };
-
     return (
         <div className="w-full max-w-md bg-gray-900 p-8 rounded-xl shadow-2xl transition-all duration-300 border border-gray-700">
             
@@ -81,8 +91,6 @@ const Login = ({ switchToRegister, switchToContact, onLoginSuccess }) => {
                             <Mail className="h-5 w-5 text-purpura" aria-hidden="true" />
                         </div>
                         <input
-                            id="email"
-                            name="email"
                             type="email"
                             autoComplete="email"
                             required
